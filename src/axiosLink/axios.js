@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Create an instance of axios
 const axiosuser = axios.create({
-  baseURL: "https://sia-backend-r48h2xkyf-faheem-fazal-pks-projects.vercel.app",
+  baseURL: "https://sia-backend-eight.vercel.app",
   
  
   headers: {
