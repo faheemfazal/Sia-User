@@ -132,14 +132,14 @@ export default function Navbar() {
         <h1 className="text-[#63247d] text-5xl">Sia</h1>
 
         <div className="flex gap-5 overflow-auto invisible md:visible md:static absolute md:mx-10" >
-          <button className="active text-[#747d88] hover:text-[#63247d]"onClick={() =>  navigate("/home") }>Home</button>
+          <div className="active text-[#747d88] hover:text-[#63247d]"onClick={() =>  navigate("/home") }>Home</div>
           {/* <button className="nav-item nav-link text-[#747d88] hover:text-[#81c408]">Shop</button> */}
-          <button className="nav-item nav-link text-[#747d88] hover:text-[#63247d]" onClick={() =>{ if(token){
+          <div className="nav-item nav-link text-[#747d88] hover:text-[#63247d]" onClick={() =>{ if(token){
 navigate('/order-Details')
           }else{
             navigate('/login-signup')
-          } }}>Order Detail</button>
-          <button className="nav-item nav-link text-[#747d88] hover:text-[#63247d]"      onClick={()=>navigate('/e-coin')}>E-coins</button>
+          } }}>Order Detail</div>
+          <div className="nav-item nav-link text-[#747d88] hover:text-[#63247d]"      onClick={()=>navigate('/e-coin')}>E-coins</div>
         </div>
         <div className="flex m-3 mr-0 gap-2">
           <div className="relative w-full border-2 border-[#63247d] rounded-lg flex justify-between lg:visible invisible">
@@ -150,9 +150,9 @@ navigate('/order-Details')
               onChange={handleInputChange}
               placeholder="Search.."
             />
-            <button className="hover:bg-[#63247d] p-2" onClick={handleSearch}>
+            <div className="hover:bg-[#63247d] p-2" onClick={handleSearch}>
               <FaSearch className="text-xl" />
-            </button>
+            </div>
             {searchResults.length > 0 && (
               <div className="absolute top-full left-0 right-0 bg-white border border-[#ffb524] rounded-lg mt-2 p-4 z-50">
                 <ul>
@@ -169,20 +169,20 @@ navigate('/order-Details')
               </div>
             )}
           </div>
-          <button className="relative p-2" onClick={() => navigate('/cart')}>
+          <div className="relative p-2" onClick={() => navigate('/cart')}>
             <FaShoppingCart className="text-[#63247d] text-2xl" />
             <span className="absolute bg-slate-500 rounded-full flex items-center justify-center text-dark text-xs" style={{ top: "-5px", left: "15px", height: "20px", minWidth: "20px" }}>{count}</span>
-          </button>
-   {!token &&     <button className="p-2 visible md:invisible md:absolute static" onClick={() => { navigate("/login-signup") }}>
+          </div>
+   {!token &&     <div className="p-2 visible md:invisible md:absolute static" onClick={() => { navigate("/login-signup") }}>
             <FaUser className="text-[#63247d] text-2xl visible md:invisible md:absolute static" />
-          </button>}
-   { !token && <button className="p-2 bg-black text-white text-sm rounded-xl whitespace-nowrap invisible md:visible md:static absolute" onClick={() => {navigate("/login-signup") }}>
+          </div>}
+   { !token && <div className="p-2 bg-black text-white text-sm rounded-xl whitespace-nowrap invisible md:visible md:static absolute" onClick={() => {navigate("/login-signup") }}>
             Login/sign up
-          </button> }
+          </div> }
           <div className={`flex text-[#63247d] text-2xl visible md:invisible md:absolute static border-4 rounded-xl active:border-gray-700 p-2 items-center text-center focus:outline-none focus:ring`}>
-            <button onClick={handleMenuToggle} className="text-center">
+            <div onClick={handleMenuToggle} className="text-center">
               <AiOutlineMenu />
-            </button>
+            </div>
             {menuOpen && (
               <div>
                 <div className="bg-white shadow-md rounded-md p-2 absolute top-16 right-2 left-2">
@@ -213,9 +213,9 @@ navigate('/order-Details')
 
            onChange={handleInputChange}
            className="rounded-lg outline-none w-full" />
-          <button className="hover:bg-[#63247d] p-2"  onClick={handleSearch}>
+          <div className="hover:bg-[#63247d] p-2"  onClick={handleSearch}>
             <FaSearch className="text-xl" />
-          </button>
+          </div>
           {searchResults.length > 0 && (
               <div className=" mx-4 absolute top-32 left-0 right-0 bg-white border border-[#63247d] rounded-lg mt-2 p-4 z-50">
                 <ul>
