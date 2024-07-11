@@ -57,12 +57,12 @@ export default function Orders() {
                     <h1 className="text-center text-white text-6xl">Orders</h1>
                     <ol className="breadcrumb justify-center flex mb-0 text-white text-2xl gap-5">
                         <li className="breadcrumb-item">
-                            <button
+                            <div
                                 className="text-[#63247d] font-bold"
                                 onClick={() => navigate("/home")}
                             >
                                 Home /
-                            </button>
+                            </div>
                         </li>
                         <li className="breadcrumb-item active">Orders</li>
                     </ol>

@@ -2,7 +2,9 @@ import React, { useEffect ,useState} from "react";
 import { useSpring, animated } from "react-spring";
 import { useHistory } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import img from '../assets/images/welcome(1).png'
+// import img from '../assets/images/welcome(1).png'
+import img from '../assets/images/m Logo.png'
+
 import LocationSelect from "../components/Modal/LocationSelect";
 
 export default function WelcomeScreen() {
