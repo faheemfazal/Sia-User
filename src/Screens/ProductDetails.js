@@ -144,7 +144,7 @@ export default function ProductDetails() {
           <h1 className="text-center text-white text-6xl ">Shop Detail</h1>
           <ol className="breadcrumb justify-center flex mb-0 text-white text-2xl gap-5">
             <li className="breadcrumb-item">
-              <button className="text-[#63247d] font-bold" onClick={()=>navigate('/home')}>Home</button>
+              <div className="text-[#63247d] font-bold" onClick={()=>navigate('/home')}>Home</div>
             </li>
 
             <li className="breadcrumb-item active ">Shop Detail</li>

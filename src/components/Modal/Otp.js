@@ -79,7 +79,7 @@ export default function Otp({ mailOrPhone, inputValue, setOtp   ,handleLogin }) 
   return (
     <div className="w-full h-full">
       <div className="flex h-[500px] items-center justify-center mx-4 md:mx-12 my-3">
-        <form onSubmit={handleSubmit} className="w-full max-w-2xl text-white flex flex-col bg-[#7f4797] bg-opacity-25 border h-72 border-lime-500 rounded-3xl">
+        <form onSubmit={handleSubmit} className="w-full max-w-2xl text-white flex flex-col bg-[#6d208f] bg-opacity-25 border h-72 border-[#360c48] rounded-3xl">
           <div className="flex-grow flex items-center justify-center">
             <div className="w-full flex flex-col justify-center text-center">
               <h1 className="m-8 text-blue-950 font-bold">ENTER YOUR OTP</h1>
@@ -108,14 +108,14 @@ export default function Otp({ mailOrPhone, inputValue, setOtp   ,handleLogin }) 
                 />
               </div>
               <div className="flex justify-between  px-10 items-center mt-2">
-                <button
+                <div
                   type="button"
                   onClick={resetOtp}
                   className={`text-white hover:underline ${canResend ? '' : 'cursor-not-allowed text-gray-500'}`}
                   disabled={!canResend}
                 >
                   Reset OTP
-                </button>
+                </div>
                 <span className="text-blue-950 font-bold">{timer}s</span>
               </div>
               <div className="flex justify-between  px-10 items-center mt-2">
@@ -129,19 +129,19 @@ export default function Otp({ mailOrPhone, inputValue, setOtp   ,handleLogin }) 
                 
               </div>
               <div className="flex justify-center items-center mt-2 mb-2">
-                <button
+                <div
                   type="button"
                   onClick={() => setOtp(false)}
                   className="text-white hover:underline flex items-center"
                 >
                   <AiOutlineArrowRight className="mr-2" />
                   Change Number
-                </button>
+                </div>
               </div>
             </div>
           </div>
           <div className="flex items-center justify-center h-[30%] rounded-3xl">
-            <button type="submit" className=" text-[#63247d] hover:text-white hover:bg-[#63247d] border-[#63247d] border-2 bg-gradient-to-r from-lime-100 via-lime-300 to-lime-400 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+            <button type="submit" className=" text-[#63247d] hover:text-white hover:bg-[#63247d] border-[#63247d] border-2  focus:ring-4 focus:outline-none  rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
               Verify OTP
             </button>
           </div>
