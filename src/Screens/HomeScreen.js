@@ -320,8 +320,8 @@ export default function HomeScreen() {
           <>
             <div className="pl-1">
               <button
-                className={`m-2 p-2 px-4 bg-[#f4f6f8] flex text-[#747d88] rounded-full 
-                      ${activeTab === "ALL PRODUCTS" ? "bg-[#63247d] text-white" : ""}
+                className={`m-2 p-2 px-4  flex  rounded-full 
+                      ${activeTab === "ALL PRODUCTS" ? "bg-[#53196c] text-white" : "bg-[#f4f6f8]  text-[#747d88]"}
                     `}
                 onClick={() => setActiveTab("ALL PRODUCTS")}
               >
@@ -333,8 +333,8 @@ export default function HomeScreen() {
               return (
                 <div className="pl-1" key={index}>
                   <button
-                    className={`m-2 p-2 px-4 bg-[#f4f6f8] flex text-[#747d88] rounded-full 
-                      ${activeTab === tabId ? "bg-[#63247d] text-white" : ""}
+                    className={`m-2 p-2 px-4  flex  rounded-full 
+                      ${activeTab === tabId ? "bg-[#61227c] text-white" : "text-[#747d88] bg-[#f4f6f8]"}
                     `}
                     onClick={() => handleCategoryProduct(tabId, item.categoryName)}
                   >
