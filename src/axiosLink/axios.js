@@ -2,9 +2,9 @@ import axios from "axios";
 
 // Create an instance of axios
 const axiosuser = axios.create({
-  // baseURL: "https://sia-backend-eight.vercel.app",
-  baseURL: "http://localhost:5000",
-  
+  baseURL: "https://sia-backend-eight.vercel.app",
+  // baseURL: "http://localhost:5000",
+  // https://sia-backend-eight.vercel.app
   // http://localhost:3000/cart
   
  
