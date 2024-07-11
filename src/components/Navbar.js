@@ -188,15 +188,15 @@ navigate('/order-Details')
                 <div className="bg-white shadow-md rounded-md p-2 absolute top-16 right-2 left-2">
                   <div className="bg-white">
                     <div className="flex flex-col items-start text-xl font-normal gap-2 text-[#747d88]">
-                      <button className="nav-link active hover:text-[#63247d]" onClick={() => {  navigate("/home") }}>Home</button>
+                      <div className="nav-link active hover:text-[#63247d]" onClick={() => {  navigate("/home") }}>Home</div>
                       {/* <button className="nav-link hover:text-[#81c408]">Shop</button> */}
-                           <button className="nav-link hover:text-[#63247d]" onClick={() =>{ if(token){
+                           <div className="nav-link hover:text-[#63247d]" onClick={() =>{ if(token){
 navigate('/order-Details')
           }else{
             navigate('/login-signup')
-          } }}>Order Detail</button>
-                      <button className="nav-link hover:text-[#63247d]">E-coin</button>
-              { token &&       <button className="nav-item nav-link hover:text-[#63247d]"onClick={handleLogout}>Logout</button>}
+          } }}>Order Detail</div>
+                      <div className="nav-link hover:text-[#63247d]"onClick={()=>navigate('/e-coin')}>E-coin</div>
+              { token &&       <div className="nav-item nav-link hover:text-[#63247d]"onClick={handleLogout}>Logout</div>}
                     </div>
                   </div>
                 </div>

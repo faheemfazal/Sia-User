@@ -61,8 +61,8 @@ export default function Login() {
       {otp ? (
         <Otp inputValue={inputValue} mailOrPhone={mailOrPhone} setOtp={setOtp} handleLogin={handleLogin} />
       ) : (
-        <div className="flex h-96 items-center justify-center sm:mx-0 mx-12 my-3">
-          <div className="bg-white p-8 rounded shadow-md w-full max-w-2xl">
+        <div className="flex h-96 items-center justify-center sm:mx-0 md:mx-12 mx-2 my-3">
+          <div className="bg-white p-4 rounded shadow-md w-full max-w-2xl">
             <h2 className="text-2xl font-bold mb-2">Login/ Sign Up</h2>
             <h2 className="text-lg mb-6">Using OTP</h2>
             <form className="space-y-6" onSubmit={handleLogin}>

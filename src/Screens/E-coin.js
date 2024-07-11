@@ -42,12 +42,12 @@ export default function ECoin() {
                 <h1 className="text-center text-white text-6xl">E-coin</h1>
                 <ol className="breadcrumb justify-center flex mb-0 text-white text-2xl gap-5">
                     <li className="breadcrumb-item">
-                        <button
+                        <div
                             className="text-[#63247d] font-bold"
                             onClick={() => navigate("/home")}
                         >
                             Home /
-                        </button>
+                        </div>
                     </li>
                     <li className="breadcrumb-item active">E-coin</li>
                 </ol>
