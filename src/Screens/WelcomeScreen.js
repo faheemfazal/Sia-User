@@ -18,18 +18,18 @@ export default function WelcomeScreen() {
   useEffect(() => {
     setTimeout(() => {
       setImageStyle({ transform: "translateY(0%)" }); // Animate image from bottom to position
-    }, 500);
+    }, 400);
     setTimeout(() => {
       setRing1Style({ padding: "2.4vh" }); // Assuming hp(5) is roughly 5vh
-    }, 300);
+    }, 400);
     setTimeout(() => {
       setRing2Style({ padding: "3.8vh" }); // Assuming hp(5) is roughly 5vh
-    }, 500);
+    }, 600);
     setTimeout(() => {
       setTextStyle({ fontSize: "5.2vh" }); // Animate text size from small to large
-    }, 700);
+    }, 800);
   
-    setTimeout(() => navigate("/home"), 2500);
+    setTimeout(() => navigate("/home"), 2700);
   }, [setRing1Style, setRing2Style, setTextStyle, setImageStyle, navigate]);
 
   return (
