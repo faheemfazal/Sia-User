@@ -66,7 +66,7 @@ export default function WelcomeScreen() {
           src={img}
           alt="Logo"
           style={imageStyle}
-          className="w-20 h-20 mt-5" // Adjust the size and spacing as needed
+          className="w-40 h-20 mt-5" // Adjust the size and spacing as needed
         />
       </div>
     </div>
