@@ -1,7 +1,8 @@
-import React,{useNavigate,useState} from 'react';
+import React,{useState} from 'react';
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
 import { useDispatch, useSelector } from "react-redux";
 import { setLogout } from "../Api/redux-toolkit/slice/userReducer";
+import { useNavigate } from 'react-router-dom';
 
 export default function Footer() {
   const [menuOpen, setMenuOpen] = useState(false);

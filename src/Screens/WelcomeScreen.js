@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSpring, animated } from "react-spring";
-import { useNavigate } from "react-router-dom";
+import { useNavigat, useNavigate } from "react-router-dom";
 import img from '../assets/images/logoSpon.png'; // Ensure correct import path
 
 export default function WelcomeScreen() {
@@ -54,7 +54,7 @@ export default function WelcomeScreen() {
         </p>
         
         {/* Animated image */}
-        <img
+        <animated.img
           src={img}
           alt="Logo"
           style={imageStyle}
