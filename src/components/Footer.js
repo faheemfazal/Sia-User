@@ -1,7 +1,19 @@
-import React from 'react';
+import React,{useNavigate,useState} from 'react';
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
+import { useDispatch, useSelector } from "react-redux";
+import { setLogout } from "../Api/redux-toolkit/slice/userReducer";
 
 export default function Footer() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const token = localStorage.getItem('Token');
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(setLogout());
+    setMenuOpen(!menuOpen);
+    localStorage.removeItem('Token');
+    navigate('/home'); // Navigate to the login page or any other page after logout
+  };
   return (
     <nav className="bg-[#4c1c61] text-[rgba(255,255,255,.5)] p-4">
       <div className="container mx-auto flex flex-wrap items-center justify-between">
@@ -37,7 +49,8 @@ export default function Footer() {
             <h2 className="text-lg font-semibold text-white">Account</h2>
             <ul className="space-y-2 mt-2">
               <li><a href="#my-account" className="hover:text-white">My Account</a></li>
-              {/* <li><a href="#shop-details" className="hover:text-white">Shop details</a></li> */}
+              <li>  { token &&       <div className="nav-item nav-link hover:text-[#63247d]"onClick={handleLogout}>Logout</div>}
+                   </li>
  
             </ul>
           </div>
