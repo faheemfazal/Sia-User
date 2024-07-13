@@ -14,21 +14,21 @@ export default function WelcomeScreen() {
 
   useEffect(() => {
     setTimeout(() => {
-      setRing1Style({ padding: "5vh" }); // Assuming hp(5) is roughly 5vh
+      setRing1Style({ padding: "2.4vh" }); // Assuming hp(5) is roughly 5vh
     }, 300);
     setTimeout(() => {
-      setRing2Style({ padding: "5vh" }); // Assuming hp(5) is roughly 5vh
+      setRing2Style({ padding: "3.8vh" }); // Assuming hp(5) is roughly 5vh
     }, 500);
     setTimeout(() => {
-      setTextStyle({ fontSize: "7vh" }); // Animate text size from small to large
+      setTextStyle({ fontSize: "5.2vh" }); // Animate text size from small to large
     }, 700);
     setTimeout(() => navigate("/home"), 2500);
   }, [setRing1Style, setRing2Style, setTextStyle, navigate]);
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen bg-[#63247d] space-y-10">
+    <div className="flex flex-col justify-center items-center h-screen  bg-[#63247d] space-y-10">
       <animated.div
-        className="bg-white bg-opacity-20 rounded-full"
+        className="bg-white bg-opacity-20 rounded-full mx-2"
         style={ring2Style}
       >
         <animated.div
@@ -46,7 +46,7 @@ export default function WelcomeScreen() {
       <div className="flex flex-col items-center space-y-2">
         <h1
           className="text-white font-bold tracking-widest"
-          style={{ fontSize: "7vh" }}
+          style={{ fontSize: "4vh" }}
         >
           SIA
         </h1>
