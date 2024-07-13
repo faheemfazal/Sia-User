@@ -17,6 +17,9 @@ export default function WelcomeScreen() {
 
   useEffect(() => {
     setTimeout(() => {
+      setImageStyle({ transform: "translateY(0%)" }); // Animate image from bottom to position
+    }, 500);
+    setTimeout(() => {
       setRing1Style({ padding: "2.4vh" }); // Assuming hp(5) is roughly 5vh
     }, 300);
     setTimeout(() => {
@@ -25,9 +28,7 @@ export default function WelcomeScreen() {
     setTimeout(() => {
       setTextStyle({ fontSize: "5.2vh" }); // Animate text size from small to large
     }, 700);
-    setTimeout(() => {
-      setImageStyle({ transform: "translateY(0%)" }); // Animate image from bottom to position
-    }, 500);
+  
     setTimeout(() => navigate("/home"), 2500);
   }, [setRing1Style, setRing2Style, setTextStyle, setImageStyle, navigate]);
 
