@@ -17,18 +17,17 @@ export default function WelcomeScreen() {
 
   useEffect(() => {
     setTimeout(() => {
-      setImageStyle({ transform: "translateY(0%)" }); // Animate image from bottom to position
-    }, 400);
-    setTimeout(() => {
       setRing1Style({ padding: "2.4vh" }); // Assuming hp(5) is roughly 5vh
-    }, 400);
+    }, 300);
     setTimeout(() => {
       setRing2Style({ padding: "3.8vh" }); // Assuming hp(5) is roughly 5vh
-    }, 600);
+    }, 500);
     setTimeout(() => {
       setTextStyle({ fontSize: "5.2vh" }); // Animate text size from small to large
     }, 700);
-  
+    setTimeout(() => {
+      setImageStyle({ transform: "translateY(0%)" }); // Animate image from bottom to position
+    }, 900);
     setTimeout(() => navigate("/home"), 2500);
   }, [setRing1Style, setRing2Style, setTextStyle, setImageStyle, navigate]);
 
@@ -67,7 +66,7 @@ export default function WelcomeScreen() {
           src={img}
           alt="Logo"
           style={imageStyle}
-          className="w-40 h-20 mt-5" // Adjust the size and spacing as needed
+          className="w-20 h-20 mt-5" // Adjust the size and spacing as needed
         />
       </div>
     </div>
