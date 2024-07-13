@@ -20,6 +20,7 @@ export default function ProductDetails() {
   const [selectedOption, setSelectedOption] = useState({});
   const { fetchCartCount } = useContext(CartContext);
   let userid = '6667454f926ecee4d29cac2d';
+  const token = localStorage.getItem('Token');
 
   console.log(selectedOption,'nvvvv');
 
@@ -82,6 +83,9 @@ export default function ProductDetails() {
   }, [productId]);
 
   const handleCart = async (productId) => {
+if(!token){
+return navigate('/login-signup')
+}
     if (selectedOption) {
       try {
         await addCart(product._id, userid,selectedOption );
@@ -216,7 +220,7 @@ export default function ProductDetails() {
                     ))}
                     </div></div>
             
-                    <button className=" rounded-full px-4 py-2 mb-4 flex gap-2  text-[#63247d] font-bold text-2xl border-2 border-[#63247d]"
+                    <button className=" rounded-full px-4 py-2 mb-4 flex gap-2  text-[#63247d] hover:text-white hover:bg-[#63247d] font-bold text-2xl border-2 border-[#63247d]"
                     onClick={handleCart}>
                       <FaShoppingBag className="mr-2" />
                       <h1>Add to cart </h1>

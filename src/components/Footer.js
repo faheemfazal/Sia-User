@@ -52,6 +52,8 @@ export default function Footer() {
               <li>  { token &&       <div className="nav-item nav-link hover:text-[#63247d]"onClick={handleLogout}>Logout</div>}
                    </li>
  
+
+
             </ul>
           </div>
           <div>
