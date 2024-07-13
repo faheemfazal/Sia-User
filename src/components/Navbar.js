@@ -129,7 +129,7 @@ export default function Navbar() {
   return (
     <div className="sticky top-0 z-50 bg-white">
       <div className="w-full h-20 flex justify-between md:px-14 px-4 font-sans font-semibold items-center ">
-        <h1 className="text-[#63247d] text-5xl">Sia</h1>
+      <h1 className="text-[#63247d] text-3xl md:text-5xl">Sia</h1>
 
         <div className="flex gap-5 overflow-auto invisible md:visible md:static absolute md:mx-10" >
           <div className="active text-[#747d88] hover:text-[#63247d]"onClick={() =>  navigate("/home") }>Home</div>
@@ -170,16 +170,16 @@ navigate('/order-Details')
             )}
           </div>
           <div className="relative p-2" onClick={() => navigate('/cart')}>
-            <FaShoppingCart className="text-[#63247d] text-2xl" />
+            <FaShoppingCart className="text-[#63247d] text-2xl md:text-3xl" />
             <span className="absolute bg-slate-500 rounded-full flex items-center justify-center text-dark text-xs" style={{ top: "-5px", left: "15px", height: "20px", minWidth: "20px" }}>{count}</span>
           </div>
    {!token &&     <div className="p-2 visible md:invisible md:absolute static" onClick={() => { navigate("/login-signup") }}>
-            <FaUser className="text-[#63247d] text-2xl visible md:invisible md:absolute static" />
+            <FaUser className="text-[#63247d]  visible md:invisible md:absolute static text-2xl md:text-3xl" />
           </div>}
-   { !token && <div className="p-2 bg-black text-white text-sm rounded-xl whitespace-nowrap invisible md:visible md:static absolute" onClick={() => {navigate("/login-signup") }}>
+   { !token && <div className="p-2 text-sm md:text-md bg-black text-white  rounded-xl whitespace-nowrap invisible md:visible md:static absolute" onClick={() => {navigate("/login-signup") }}>
             Login/sign up
           </div> }
-          <div className={`flex text-[#63247d] text-2xl visible md:invisible md:absolute static border-4 rounded-xl active:border-gray-700 p-2 items-center text-center focus:outline-none focus:ring`}>
+          <div className={`flex text-[#63247d] text-2xl md:text-3xl visible md:invisible md:absolute static border-4 rounded-xl active:border-gray-700 p-2 items-center text-center focus:outline-none focus:ring`}>
             <div onClick={handleMenuToggle} className="text-center">
               <AiOutlineMenu />
             </div>
@@ -187,7 +187,7 @@ navigate('/order-Details')
               <div>
                 <div className="bg-white shadow-md rounded-md p-2 absolute top-16 right-2 left-2">
                   <div className="bg-white">
-                    <div className="flex flex-col items-start text-xl font-normal gap-2 text-[#747d88]">
+                    <div className="flex flex-col items-start text-xl md:text-2xl font-normal gap-2 text-[#747d88]">
                       <div className="nav-link active hover:text-[#63247d]" onClick={() => {  navigate("/home") }}>Home</div>
                       {/* <button className="nav-link hover:text-[#81c408]">Shop</button> */}
                            <div className="nav-link hover:text-[#63247d]" onClick={() =>{ if(token){
