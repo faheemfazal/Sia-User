@@ -54,7 +54,7 @@ export default function WelcomeScreen() {
         </p>
         
         {/* Animated image */}
-        <animated.img
+        <img
           src={img}
           alt="Logo"
           style={imageStyle}
