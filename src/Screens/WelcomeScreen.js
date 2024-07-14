@@ -45,7 +45,7 @@ export default function WelcomeScreen() {
             style={textStyle}
             className="text-white font-bold tracking-widest"
           >
-            Pickupiko.com
+            Pickupiko
           </animated.div>
         </animated.div>
       </animated.div>
