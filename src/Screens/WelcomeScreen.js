@@ -28,7 +28,7 @@ export default function WelcomeScreen() {
     setTimeout(() => {
       setImageStyle({ transform: "translateY(0%)" }); // Animate image from bottom to position
     }, 900);
-    setTimeout(() => navigate("/home"), 4500);
+    setTimeout(() => navigate("/home"), 5500);
   }, [setRing1Style, setRing2Style, setTextStyle, setImageStyle, navigate]);
 
   return (
