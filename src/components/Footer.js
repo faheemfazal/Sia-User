@@ -19,7 +19,7 @@ export default function Footer() {
     <nav className="bg-[#4c1c61] text-[rgba(255,255,255,.5)] p-4">
       <div className="container mx-auto flex flex-wrap items-center justify-between">
         <div className=" items-center">
-          <h1 className="text-white lg:text-5xl text-2xl font-bold ">Sia</h1>
+          <h1 className="text-white lg:text-5xl text-2xl font-bold ">Pickupiko</h1>
 
           <h1 className="hover:text-white lg:text-xl text-sm text-white">Fresh products</h1>
       

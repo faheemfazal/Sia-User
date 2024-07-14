@@ -129,7 +129,7 @@ export default function Navbar() {
   return (
     <div className="sticky top-0 z-50 bg-white">
       <div className="w-full h-20 flex justify-between md:px-14 px-4 font-sans font-semibold items-center ">
-      <h1 className="text-[#63247d] text-3xl md:text-5xl">Sia</h1>
+      <h1 className="text-[#63247d] text-3xl md:text-5xl">Pickupiko</h1>
 
         <div className="flex gap-5 overflow-auto invisible md:visible md:static absolute md:mx-10" >
           <div className="active text-[#747d88] hover:text-[#63247d]"onClick={() =>  navigate("/home") }>Home</div>

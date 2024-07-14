@@ -62,7 +62,7 @@ export default function WelcomeScreen() {
         >
           Sia is always right
         </p>
-        <animated.img
+        <img
           src={img}
           alt="Logo"
           style={imageStyle}
