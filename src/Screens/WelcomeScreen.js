@@ -33,7 +33,7 @@ export default function WelcomeScreen() {
   }, [setRing1Style, setRing2Style, setTextStyle, setImageStyle, navigate]);
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen bg-[#63247d] space-y-10">
+    <div className="flex flex-col justify-center items-center h-screen bg-[#ce9fff] space-y-10">
       <animated.div className="bg-white bg-opacity-20 rounded-full mx-2" style={ring2Style}>
         <animated.div className="bg-white bg-opacity-20 rounded-full" style={ring1Style}>
           <animated.div style={textStyle} className="text-white font-bold tracking-widest">

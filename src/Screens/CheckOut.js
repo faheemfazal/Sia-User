@@ -339,7 +339,7 @@ export default function Checkout() {
                           checked={selectedPayment === "cash on delivery"}
                           onChange={handlePaymentChange}
                         />
-                        <span className="ml-2">Cash On Delivery</span>
+                        <span className="ml-2">Cash on pickup-hub</span>
                       </label>
                     </div>
                   </div>
