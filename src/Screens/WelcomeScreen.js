@@ -18,13 +18,13 @@ export default function WelcomeScreen() {
   useEffect(() => {
     setTimeout(() => {
       setRing1Style({ padding: "2.4vh" }); // Assuming hp(5) is roughly 5vh
-    }, 300);
+    }, 250);
     setTimeout(() => {
       setRing2Style({ padding: "3.8vh" }); // Assuming hp(5) is roughly 5vh
-    }, 500);
+    }, 450);
     setTimeout(() => {
       setTextStyle({ fontSize: "5.2vh" }); // Animate text size from small to large
-    }, 700);
+    }, 650);
     setTimeout(() => {
       setImageStyle({ transform: "translateY(0%)" }); // Animate image from bottom to position
     }, 900);
@@ -66,7 +66,7 @@ export default function WelcomeScreen() {
           src={img}
           alt="Logo"
           style={imageStyle}
-          className="w-48 h-24 mt-5" // Adjust the size and spacing as needed
+          className="w-72 h-32 mt-5" // Adjust the size and spacing as needed
         />
       </div>
     </div>
