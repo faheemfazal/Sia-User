@@ -32,12 +32,20 @@ export function Cart() {
           setDeletedProducts(response?.data?.cart)
         }else if(response?.status === 202){
           message.success('Checkout successful');
+          Toast.show({
+            icon: 'success',
+            content: 'Checkout successful',
+          });
 
           navigate('/checkout')
         }
 
       }else{
-      message.error('Cart bis empty')
+      message.error('Cart is empty')
+      Toast.show({
+        icon: 'fail',
+        content: 'Cart is empty',
+      });
 
       }
 
