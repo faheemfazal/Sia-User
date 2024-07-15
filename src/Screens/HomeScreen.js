@@ -53,6 +53,7 @@ export default function HomeScreen() {
   }, []);
 
 
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {

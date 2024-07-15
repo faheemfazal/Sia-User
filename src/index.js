@@ -6,12 +6,15 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./Api/redux-toolkit/store";
 import { CartProvider } from './context/CartContext';
+import {  ConfigProvider } from "antd";
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <ConfigProvider prefixCls="custom-ant">
+
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <CartProvider>
@@ -19,5 +22,6 @@ root.render(
         </CartProvider>
       </PersistGate>
     </Provider>
+    </ConfigProvider>
   </React.StrictMode>
 );
