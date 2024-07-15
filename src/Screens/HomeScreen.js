@@ -152,9 +152,12 @@ export default function HomeScreen() {
               ...prevCartData,
               [productId]: res.data, // Update the cart data state with the response data
             }));
+          }else if(res.status === 202){
+            message.error('Quantity not available')
           }
         }
       } catch (error) {
+        message.error("Error adding to cart");
         console.error("Error adding to cart:", error);
       }
     }
