@@ -6,16 +6,15 @@ import { setLogin } from "../../Api/redux-toolkit/slice/userReducer";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
-export default function Otp({ mailOrPhone, inputValue, setOtp   ,handleLogin }) {
+export default function Otp({ mailOrPhone, inputValue, setOtp, handleLogin }) {
   const [code, setCode] = useState("");
   const [timer, setTimer] = useState(30);
   const [canResend, setCanResend] = useState(false);
   const reduxstate = useSelector((state) => state.userSlice);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [msg,setMsg]= useState('')
-  const [load,setLoad]=useState(false)
-
+  const [msg, setMsg] = useState("");
+  const [load, setLoad] = useState(false);
 
   useEffect(() => {
     const countdown = setInterval(() => {
@@ -39,27 +38,26 @@ export default function Otp({ mailOrPhone, inputValue, setOtp   ,handleLogin }) 
     try {
       const res = await verifyOtp(code, inputValue, mailOrPhone);
       if (res.status === 200) {
-        localStorage.setItem('Token', res.data.token);
-        dispatch(setLogin({
-          ...reduxstate,
-          id: res.data.id,
-          token: res.data.token,
-        }));
-        navigate('/home');
+        localStorage.setItem("Token", res.data.token);
+        dispatch(
+          setLogin({
+            ...reduxstate,
+            id: res.data.id,
+            token: res.data.token,
+          })
+        );
+        navigate("/home");
       }
-      if(res.status===202){
-        setMsg('Invalid otp')
+      if (res.status === 202) {
+        setMsg("Invalid otp");
         setCode("");
       }
     } catch (error) {
-      console.error('Error during OTP verification:', error);
+      console.error("Error during OTP verification:", error);
     }
   };
 
-  console.log(msg,'ooooo');
-
-  const resetOtp =async () => {
-    
+  const resetOtp = async () => {
     setCode("");
     setTimer(30);
     setCanResend(false);
@@ -67,11 +65,11 @@ export default function Otp({ mailOrPhone, inputValue, setOtp   ,handleLogin }) 
       const res = await postlogin(inputValue, mailOrPhone);
       if (res.status === 200) {
         setOtp(true);
-        setLoad(!load)
+        setLoad(!load);
       }
     } catch (error) {
-      console.error('Error during login:', error);
-      setMsg('An error occurred during login.');
+      console.error("Error during login:", error);
+      setMsg("An error occurred during login.");
     }
     // Logic to resend OTP can be added here
   };
@@ -79,7 +77,10 @@ export default function Otp({ mailOrPhone, inputValue, setOtp   ,handleLogin }) 
   return (
     <div className="w-full h-full">
       <div className="flex h-[500px] items-center justify-center mx-4 md:mx-12 my-3">
-        <form onSubmit={handleSubmit} className="w-full max-w-2xl text-white flex flex-col bg-[#6d208f] bg-opacity-25 border h-72 border-[#360c48] rounded-3xl">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-2xl text-white flex flex-col bg-[#6d208f] bg-opacity-25 border h-72 border-[#360c48] rounded-3xl"
+        >
           <div className="flex-grow flex items-center justify-center">
             <div className="w-full flex flex-col justify-center text-center">
               <h1 className="m-8 text-blue-950 font-bold">ENTER YOUR OTP</h1>
@@ -111,7 +112,9 @@ export default function Otp({ mailOrPhone, inputValue, setOtp   ,handleLogin }) 
                 <div
                   type="button"
                   onClick={resetOtp}
-                  className={`text-white hover:underline ${canResend ? '' : 'cursor-not-allowed text-gray-500'}`}
+                  className={`text-white hover:underline ${
+                    canResend ? "" : "cursor-not-allowed text-gray-500"
+                  }`}
                   disabled={!canResend}
                 >
                   Reset OTP
@@ -119,14 +122,9 @@ export default function Otp({ mailOrPhone, inputValue, setOtp   ,handleLogin }) 
                 <span className="text-blue-950 font-bold">{timer}s</span>
               </div>
               <div className="flex justify-between  px-10 items-center mt-2">
-                <h1
-                
-                  className={`text-red-500 font-bold  text-sm `}
-                 
-                >
-                  {msg   && msg}
+                <h1 className={`text-red-500 font-bold  text-sm `}>
+                  {msg && msg}
                 </h1>
-                
               </div>
               <div className="flex justify-center items-center mt-2 mb-2">
                 <div
@@ -141,7 +139,10 @@ export default function Otp({ mailOrPhone, inputValue, setOtp   ,handleLogin }) 
             </div>
           </div>
           <div className="flex items-center justify-center h-[30%] rounded-3xl">
-            <button type="submit" className=" text-[#63247d] hover:text-white hover:bg-[#63247d] border-[#63247d] border-2  focus:ring-4 focus:outline-none  rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+            <button
+              type="submit"
+              className=" text-[#63247d] hover:text-white hover:bg-[#63247d] border-[#63247d] border-2  focus:ring-4 focus:outline-none  rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+            >
               Verify OTP
             </button>
           </div>

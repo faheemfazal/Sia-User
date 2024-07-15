@@ -1,8 +1,7 @@
 import { useState, useEffect, useContext, useRef } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { FaAngleDown, FaMinus, FaPlus } from "react-icons/fa";
-import { useSelector } from "react-redux";
 import { getProduct } from "../Api/product";
 import { addCart, cartDecrement, cartIncrement } from "../Api/cart";
 import { CartContext } from "../context/CartContext";
@@ -26,17 +25,12 @@ export default function HomeScreen() {
   const navigate = useNavigate();
   let id = "6667454f926ecee4d29cac2d";
 
-  const [menuOpen, setMenuOpen] = useState(false);
   const [showHubs, setShowHubs] = useState(false);
   // const [categories, setCategories] = useState([]);
-  const [searchResults, setSearchResults] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
   // const { fetchCartCount } = useContext(CartContext);
   const [activeTab, setActiveTab] = useState("ALL PRODUCTS");
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [reload, setReload] = useState(false);
-  const location = useLocation();
-  const [shouldReload, setShouldReload] = useState(false);
   const [productload, setProductload] = useState(false);
   const modalRef = useRef(null);
   const [cartProducts, setCartProducts] = useState([]);
@@ -119,20 +113,18 @@ export default function HomeScreen() {
     setSelectedCategory(category);
     // fetchCategoryData(category.categoryName).then((res) => {
     //   // Handle the response data as needed
-    //   console.log('Category Data:', res);
     // });
   };
 
   const handleSubCategoryClick = (categoryName, subCategoryName) => {
     // fetchSubCategoryData(categoryName, subCategoryName).then((res) => {
     //   // Handle the response data as needed
-    //   console.log('SubCategory Data:', res);
     // });
   };
 
-  const handleCategoriesClick = () => {
-    setShowHubs(!showHubs);
-  };
+  // const handleCategoriesClick = () => {
+  //   setShowHubs(!showHubs);
+  // };
 
   const handleCartAdd = (productId) => {
     setOpenDropdown(openDropdown === productId ? null : productId);
@@ -183,6 +175,10 @@ export default function HomeScreen() {
       const res = await cartIncrement(productId, unit, unitType, id); // Assuming cartIncrement is an async function
       if (res?.status === 200) {
         message.success("Added into cart");
+        Toast.show({
+          icon: 'success',
+          content: 'Added into cart',
+        });
         setReducing(false); // Reset the loading state
         setMs(""); // Clear any message state if needed
         setCartData((prevCartData) => ({
@@ -206,6 +202,10 @@ export default function HomeScreen() {
       const res = await cartDecrement(productId, unit, unitType, id); // Assuming cartDecrement is an async function
       if (res?.status === 200) {
         message.success("reduced from the cart");
+        Toast.show({
+          icon: 'success',
+          content: 'reduced from the cart',
+        });
 
         setReducing(false); // Reset the loading state
         setMs(""); // Clear any message state if needed
@@ -216,6 +216,10 @@ export default function HomeScreen() {
         // Optionally update local state or perform other actions upon success
         setCount(count - 1); // Update count state or any other local state
       } else if (res?.status === 202) {
+        Toast.show({
+          icon: 'success',
+          content: 'product has removed from the cart',
+        });
         message.success("product has removed from the cart");
 
         setCartData((prevCartData) => {
@@ -540,7 +544,7 @@ export default function HomeScreen() {
                           </div>
                           <div className="w-2/6 h-full bg-white flex items-center justify-center">
                             {cartData[data._id]?.existingProduct?.quantity || 1}
-                            {console.log(cartData[data._id], "klklklkk")}
+                           
                           </div>
                           <div
                             className="w-2/6 h-full bg-red-600 flex items-center justify-center rounded-r-lg"

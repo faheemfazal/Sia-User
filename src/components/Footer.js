@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
-import { FaFacebookF, FaInstagram } from 'react-icons/fa';
-import { useDispatch, useSelector } from "react-redux";
+import {  FaInstagram } from 'react-icons/fa';
+import { useDispatch } from "react-redux";
 import { setLogout } from "../Api/redux-toolkit/slice/userReducer";
 import { useNavigate } from 'react-router-dom';
 import logo  from '../assets/images/logoWelocome.png'

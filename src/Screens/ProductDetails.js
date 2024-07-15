@@ -22,11 +22,9 @@ export default function ProductDetails() {
   let userid = '6667454f926ecee4d29cac2d';
   const token = localStorage.getItem('Token');
 
-  console.log(selectedOption,'nvvvv');
 
   const navigate = useNavigate();
   const { id } = useParams();
-  console.log(id, "ooooooooo", productId);
   if (id != productId) {
     setProductId(id);
   }
@@ -98,7 +96,6 @@ return navigate('/login-signup')
   };
 
   const handleOptionSelect = ( option) => {
-    console.log(option,'pppp',selectedOption);
     setSelectedOption(option);
   };
   let options = [];
@@ -193,7 +190,6 @@ return navigate('/login-signup')
                     </div> */}
                     <p className="mb-4 text-[#747d88] flex w-full">
                      {product?.discription?product.discription:"Welcome to our store! Here you will find a wide variety of high-quality products designed to meet your needs and preferences. Each item in our collection is carefully selected to ensure the best value and satisfaction for our customers."
-
 }
                     </p>
                  

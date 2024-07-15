@@ -18,7 +18,6 @@ export default function ECoin() {
 
     useEffect(() => {
         getdate().then((res) => {
-            console.log(res,'pppp');
             if (res?.status === 200) {
                 setDate(res.data.date);
                 setCoins(res.data.client)
@@ -26,7 +25,6 @@ export default function ECoin() {
         });
     }, []);
 
-    console.log(date, 'oooooo');
 
     return (
         <div className="">

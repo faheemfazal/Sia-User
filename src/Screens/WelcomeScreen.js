@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import { useNavigate } from "react-router-dom";
 import img from '../assets/images/logoSpon.jpg'; // Import your background image here
 import logo from '../assets/images/logoWelocome.png'; // Import your background image here
 
-import LocationSelect from "../components/Modal/LocationSelect";
 
 export default function WelcomeScreen() {
   const [ring1Style, setRing1Style] = useSpring(() => ({ padding: "0px" }));

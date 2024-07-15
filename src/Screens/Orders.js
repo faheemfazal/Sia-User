@@ -1,4 +1,3 @@
-import { FaShoppingBag } from "react-icons/fa";
 import Navbar from "../components/Navbar";
 import img from '../assets/images/fruite-item-5.jpg';
 import coin from '../assets/images/GOLD.png';
@@ -29,9 +28,7 @@ export default function Orders() {
 
     useEffect(() => {
         getOrders(id).then((res) => {
-            console.log(res, 'order');
             if (res?.status === 200) {
-                console.log(res,';;');
                 setOrders(res?.data?.order);
                 setCoins(res?.data?.coins);
 
@@ -40,7 +37,6 @@ export default function Orders() {
         })
     }, []);
 
-    console.log(orders,'orders');
 
     return (
         <>

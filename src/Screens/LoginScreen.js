@@ -1,10 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
 import { postlogin } from "../Api/Login";
-import { setLogin } from "../Api/redux-toolkit/slice/userReducer";
 import Otp from "../components/Modal/Otp";
 import Navbar from "../components/Navbar";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function Login() {
   const [inputValue, setInputValue] = useState('');
@@ -12,8 +9,7 @@ export default function Login() {
   const [error, setError] = useState('');
   const [msg, setMsg] = useState('');
   const [otp, setOtp] = useState(false);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+
 
   const validateInput = (value) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

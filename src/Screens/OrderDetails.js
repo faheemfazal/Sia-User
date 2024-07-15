@@ -13,12 +13,10 @@ export default function OrderDetails() {
 
   useEffect(() => {
     getOrderView(orderId).then((res) => {
-      console.log(res, "order data");
       setOrder(res?.data[0]);
     });
   }, [orderId]);
 
-  console.log(order, "mmmm");
 
   return (
     <>

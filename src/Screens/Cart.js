@@ -1,13 +1,14 @@
 import Navbar from "../components/Navbar";
 import img from "../assets/images/fruite-item-5.jpg";
 import empty from "../assets/images/empty.jpg";
-import { IoClose } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { cartDecrement, cartIncrement, cartView, checkCart } from "../Api/cart";
 import Footer from "../components/Footer";
-import { message, Modal, Input,Button } from 'antd';
+import {Toast} from 'antd-mobile'
+
+import { message, Modal,Button } from 'antd';
 
 export function Cart() {
   const [sliders, setSlider] = useState(15);
@@ -26,12 +27,12 @@ export function Cart() {
     try {
       if(carts.length){
         const response = await checkCart();
-  console.log(response,'log');
         if (response?.status === 200) {
           setIsModalOpen(true); // Open modal on success
           setDeletedProducts(response?.data?.cart)
         }else if(response?.status === 202){
           message.success('Checkout successful');
+
           navigate('/checkout')
         }
 
@@ -51,6 +52,10 @@ export function Cart() {
     // Remove deleted products from cart
     if(deletedProducts?.length<carts?.length){
       navigate('/checkout')
+      Toast.show({
+        icon: 'success',
+        content: 'Removed unavailable products and proceeded with checkout',
+      });
       message.success('Removed unavailable products and proceeded with checkout');
 
     }else{
@@ -59,14 +64,11 @@ export function Cart() {
     }
   };
 
-  console.log(carts,'catrsd');
 
   const handleIncrement = (productId, unit, unitType) => {
-    console.log(productId, unit, unitType, 'pppppp');
     setReducing(true);
     setMs('Increasing..');
     cartIncrement(productId, unit, unitType, id).then((res) => {
-      console.log(res);
       setReducing(false);
       setMs('');
       setCount(count + 1);
@@ -77,34 +79,30 @@ export function Cart() {
     setReducing(true);
     setMs('Reducing..');
     cartDecrement(productId, unit, unitType, id).then((res) => {
-      console.log(res);
       setCount(count - 1);
       setReducing(false);
       setMs('');
     });
-    console.log(count, 'oo');
     if (count == 1) {
       setReload(!reload);
       return;
     }
   };
 
-  const handleChange = (event) => {
-    setSlider(event.target.value);
-  };
+  // const handleChange = (event) => {
+  //   setSlider(event.target.value);
+  // };
 
   useEffect(() => {
     cartView(id).then((response) => {
       if(response?.status===200){
 
         setCarts(response?.data?.cartItems);
-        console.log(response, 'oooooooooooooo');
       }else{
         setCarts([])
       }
     });
   }, [count, reload]);
-  console.log(carts, 'carts');
 
   return (
     <div>

@@ -1,10 +1,9 @@
 import Navbar from "../components/Navbar";
 import { useContext, useEffect, useState } from "react";
-import { cartView, cartViewForCheckout } from "../Api/cart";
+import {  cartViewForCheckout } from "../Api/cart";
 import { placeOrder } from "../Api/order";
 import { CartContext } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
-import img from '../assets/images/Check animation.gif';
 import Footer from "../components/Footer";
 import scannerimg from '../assets/images/WhatsApp Image 2024-06-29 at 07.34.44_cd56ed82.jpg';
 import axios from "axios";
@@ -14,7 +13,6 @@ import SuccessModal from '../components/Modal/SuccessModal';
 import { message } from 'antd';
 
 export default function Checkout() {
-  const [successopen, setSuccessopen] = useState(true);
   const [selectedPayment, setSelectedPayment] = useState("");
   const [cartViews, setCartViews] = useState([]);
   const [name, setName] = useState("");
@@ -39,7 +37,6 @@ export default function Checkout() {
     try{
       let coins={Platinum:0,Gold:0,Silver:0}
       cartViews.forEach((data)=>{
-        console.log(data,'da66a');
         if(data.unitType == 'KG' || data.unitType=='G'){
              if(data.unit=="1"){
                const coin=  data.product.coin1kg * data.quantity
@@ -112,9 +109,9 @@ export default function Checkout() {
     setSelectedPayment(value);
   };
 
-  const handleFileChange = (event) => {
-    setScreenshot(event.target.files[0]);
-  };
+  // const handleFileChange = (event) => {
+  //   setScreenshot(event.target.files[0]);
+  // };
 
   const handleFile = async (event) => {
     try {
@@ -127,7 +124,6 @@ export default function Checkout() {
         setScreenshot(response.data.secure_url);
       }
     } catch (error) {
-      console.log(error);
     }
   };
 
@@ -162,17 +158,13 @@ export default function Checkout() {
         };
 
         if (selectedPayment === "scanner payment") {
-          console.log(screenshot,'opopopodakfpspdjf');
           orderData.transactionId = transactionId;
           orderData.screenshot = screenshot;
         }
 
-        console.log(orderData); // Check orderData object in console
 
         const res = await placeOrder(orderData,coinstate);
-        console.log(
-          res,'pp'
-        );
+      
         if (res.status === 200) {
           fetchCartCount();
           // setSuccessopen(false);
