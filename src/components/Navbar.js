@@ -150,7 +150,7 @@ navigate('/order-Details')
           <div className="relative w-full border-2 border-[#63247d] rounded-lg flex justify-between lg:visible invisible">
             <input
               type="search"
-              className="rounded-lg outline-none w-full"
+              className="rounded-lg outline-none w-full p-2"
               value={searchQuery}
               onChange={handleInputChange}
               placeholder="Search.."
@@ -211,7 +211,7 @@ navigate('/order-Details')
         </div>
       </div>
       <div className="w h-10 flex justify-between md:px-14 px-4 font-sans font-semibold items-center visible md:invisible md:absolute static">
-        <div className="w-full border-2 border-[#63247d] rounded-lg flex justify-between">
+        <div className="w-full border-2 border-[#63247d] rounded-lg flex justify-between pl-2">
           <input type="search"
            value={searchQuery}
            placeholder="Search..."

@@ -178,7 +178,7 @@ export function Cart() {
                 </div>
                 <div className="w-[200px] h-full items-end text-end">
                   {reducing ? (
-                    <h1 className="flex items-end justify-end space-x-4">Reducing..</h1>
+                    <h1 className="flex items-end justify-end space-x-4">loading..</h1>
                   ) : (
                     <div className="flex items-end justify-end space-x-4">
                       <button
