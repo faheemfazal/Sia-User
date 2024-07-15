@@ -3,6 +3,8 @@ import { FaFacebookF, FaInstagram } from 'react-icons/fa';
 import { useDispatch, useSelector } from "react-redux";
 import { setLogout } from "../Api/redux-toolkit/slice/userReducer";
 import { useNavigate } from 'react-router-dom';
+import logo  from '../assets/images/logoWelocome.png'
+
 
 export default function Footer() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,7 +21,11 @@ export default function Footer() {
     <nav className="bg-[#4c1c61] text-[rgba(255,255,255,.5)] p-4">
       <div className="container mx-auto flex flex-wrap items-center justify-between">
         <div className=" items-center">
-          <h1 className="text-white lg:text-5xl text-2xl font-bold ">Pickupiko</h1>
+        <img
+          src={logo}
+          alt="Pickupiko"
+          className="h-8 md:h-12" // Adjust height based on text-3xl and text-5xl
+        />
 
           <h1 className="hover:text-white lg:text-xl text-sm text-white">Fresh products</h1>
       
