@@ -12,6 +12,7 @@ import Footer from "../components/Footer";
 import LazyLoad from 'react-lazyload';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import {Toast} from 'antd-mobile'
 
 export default function HomeScreen() {
   const [count, setCount] = useState(1);
@@ -147,6 +148,10 @@ export default function HomeScreen() {
           if (res?.status === 200) {
             fetchCartCount(); // Fetch and update the cart count
             message.success("Added into cart");
+            Toast.show({
+              icon: 'success',
+              content: 'Added to cart',
+            });
             setCartProducts((prev) => [...prev, productId]);
             setCartData((prevCartData) => ({
               ...prevCartData,
@@ -154,11 +159,19 @@ export default function HomeScreen() {
             }));
           }else if(res.status === 202){
             message.error('Quantity not available')
+            Toast.show({
+              icon: 'fail',
+              content: 'Quantity not available',
+            });
           }
         }
       } catch (error) {
         message.error("Error adding to cart");
         console.error("Error adding to cart:", error);
+        Toast.show({
+          icon: 'success',
+          content: 'Quantity not available',
+        });
       }
     }
   };
