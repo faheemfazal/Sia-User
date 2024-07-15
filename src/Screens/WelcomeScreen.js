@@ -42,20 +42,20 @@ export default function WelcomeScreen() {
         </animated.div>
       </animated.div>
       <div className="flex flex-col items-center space-y-2">
-        <h1 className="text-white font-bold tracking-widest" style={{ fontSize: "4vh" }}>
+        {/* <h1 className="text-white font-bold tracking-widest" style={{ fontSize: "4vh" }}>
           SIA
-        </h1>
+        </h1> */}
         <p className="text-white font-medium tracking-widest" style={{ fontSize: "2vh" }}>
-          Sia is always right
+        Sharing Is Altruism
         </p>
-        <p className="text-white font-medium tracking-widest" style={{ fontSize: "2vh" }}>
+        <p className="text-white font-medium tracking-widest pt-2" style={{ fontSize: "2vh" }}>
           Sponsored by
         </p>
         <animated.img
           src={img}
           alt="Logo"
           style={imageStyle}
-          className="w-64 h-28" // Adjust the size and spacing as needed
+          className="w-28 h-16" // Adjust the size and spacing as needed
         />
       </div>
     </div>
