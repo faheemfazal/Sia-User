@@ -210,7 +210,7 @@ navigate('/order-Details')
           </div>
         </div>
       </div>
-      <div className="w h-10 flex justify-between md:px-14 px-4 font-sans font-semibold items-center visible md:invisible md:absolute static">
+      <div className="w h-10 flex justify-between md:px-14 px-4 font-sans mb-2 font-semibold items-center visible md:invisible md:absolute static">
         <div className="w-full border-2 border-[#63247d] rounded-lg flex justify-between pl-2">
           <input type="search"
            value={searchQuery}
@@ -218,7 +218,7 @@ navigate('/order-Details')
 
            onChange={handleInputChange}
            className="rounded-lg outline-none w-full" />
-          <div className="hover:bg-[#63247d] p-2"  onClick={handleSearch}>
+          <div className="hover:bg-[#63247d] p-2 "  onClick={handleSearch}>
             <FaSearch className="text-xl" />
           </div>
           {searchResults.length > 0 && (
