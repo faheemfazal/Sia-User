@@ -40,7 +40,7 @@ export default function HomeScreen() {
   const token = localStorage.getItem("Token");
 
   const [loading, setLoading] = useState(true);
-  const [loadingSpinner, setLoadingSpinner] = useState(true);
+  const [loadingSpinner, setLoadingSpinner] = useState(false);
 
 
   // useEffect(() => {
