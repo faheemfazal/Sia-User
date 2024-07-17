@@ -12,7 +12,7 @@ import LazyLoad from 'react-lazyload';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import {Toast} from 'antd-mobile'
-import Loader from 'react-loader-spinner';
+import { TailSpin } from 'react-loader-spinner';
 
 export default function HomeScreen() {
   const [count, setCount] = useState(1);
@@ -527,16 +527,15 @@ export default function HomeScreen() {
                         className="w-full h-10 border-2 rounded-lg items-center border-[#63247d] flex justify-center px-2 cursor-pointer"
                         onClick={() => handleCart(data._id)}
                       >
-                            {loadingSpinner ? (
-      <Loader
-        type="TailSpin"
-        color="#63247d"
-        height={20}
-        width={20}
-      />
-    ) : (
-      <p>Add</p>
-    )}
+                        {loading ? (
+  <TailSpin
+    color="#63247d"
+    height={20}
+    width={20}
+  />
+) : (
+  <p>Add</p>
+)}
                       </div>
                     </div>
                     <div className=" w-full flex justify-end">
