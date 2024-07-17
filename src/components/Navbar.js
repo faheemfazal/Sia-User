@@ -118,7 +118,7 @@ export default function Navbar() {
         <img
           src={logo}
           alt="Pickupiko"
-          className="h-8 md:h-12" // Adjust height based on text-3xl and text-5xl
+          className="h-8 md:h-12 w-28" // Adjust height based on text-3xl and text-5xl
         />
 
         <div className="flex gap-5 overflow-auto invisible md:visible md:static absolute md:mx-10">
