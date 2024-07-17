@@ -539,44 +539,47 @@ export default function HomeScreen() {
                       </div>
                     </div>
                     <div className=" w-full flex justify-end">
-                      {(cartProducts.includes(data._id) ||
-                        cartData[data._id]) && (
-                        <div className="w-60 h-10 flex px-3 items-center gap-7 justify-between mb-4 ">
-                          <h1>
-                            {cartData[data._id]?.existingProduct?.total ||
-                              selected.price}
-                          </h1>
-                          <div
-                            className="w-2/6 h-10 bg-red-600 flex items-center justify-center rounded-l-lg"
-                            onClick={() =>
-                              handleDecrement(
-                                data._id,
-                                selected.unit,
-                                selected.unitType
-                              )
-                            }
-                          >
-                            <FaMinus />
-                          </div>
-                          <div className="w-2/6 h-full bg-white flex items-center justify-center">
-                            {cartData[data._id]?.existingProduct?.quantity || 1}
-                           
-                          </div>
-                          <div
-                            className="w-2/6 h-full bg-red-600 flex items-center justify-center rounded-r-lg"
-                            onClick={() =>
-                              handleIncrement(
-                                data._id,
-                                selected.unit,
-                                selected.unitType
-                              )
-                            }
-                          >
-                            <FaPlus />
-                          </div>
-                        </div>
-                      )}
-                    </div>
+  {(cartProducts.includes(data._id) || cartData[data._id]) && (
+    <div className="w-60 h-10 flex px-3 items-center gap-7 justify-between mb-4 ">
+      <h1>
+        {cartData[data._id]?.existingProduct?.total || selected.price}
+      </h1>
+      <div
+        className="w-2/6 h-10 bg-red-600 flex items-center justify-center rounded-l-lg"
+        onClick={() =>
+          handleDecrement(data._id, selected.unit, selected.unitType)
+        }
+      >
+        {reducing? (
+          <TailSpin type="TailSpin" color="#63247d" height={20} width={20} />
+        ) : (
+          <FaMinus />
+        )}
+      </div>
+      <div className="w-2/6 h-full bg-white flex items-center justify-center">
+        {reducing? (
+          <TailSpin type="TailSpin" color="#63247d" height={20} width={20} />
+        ) : (
+          <span>
+            {cartData[data._id]?.existingProduct?.quantity || 1}
+          </span>
+        )}
+      </div>
+      <div
+        className="w-2/6 h-full bg-red-600 flex items-center justify-center rounded-r-lg"
+        onClick={() =>
+          handleIncrement(data._id, selected.unit, selected.unitType)
+        }
+      >
+        {reducing? (
+          <TailSpin type="TailSpin" color="#63247d" height={20} width={20} />
+        ) : (
+          <FaPlus />
+        )}
+      </div>
+    </div>
+  )}
+</div>
                   </div>
                 );
               })
