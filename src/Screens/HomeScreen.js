@@ -527,7 +527,7 @@ export default function HomeScreen() {
                         className="w-full h-10 border-2 rounded-lg items-center border-[#63247d] flex justify-center px-2 cursor-pointer"
                         onClick={() => handleCart(data._id)}
                       >
-                        {loading ? (
+                        {loadingSpinner ? (
   <TailSpin
     color="#63247d"
     height={20}
