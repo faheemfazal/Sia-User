@@ -40,12 +40,12 @@ export default function HomeScreen() {
 
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // Simulate data fetching
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000); // Set a delay to simulate loading time
-  }, []);
+  // useEffect(() => {
+  //   // Simulate data fetching
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 2000); // Set a delay to simulate loading time
+  // }, []);
 
 
 
@@ -93,6 +93,8 @@ export default function HomeScreen() {
           }
           // setLoading(false);
         });
+      setLoading(false);
+
 
         setSelectedOption(defaultOptions);
       } catch (error) {
