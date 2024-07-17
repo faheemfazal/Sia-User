@@ -12,6 +12,7 @@ import LazyLoad from 'react-lazyload';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import {Toast} from 'antd-mobile'
+import Loader from 'react-loader-spinner';
 
 export default function HomeScreen() {
   const [count, setCount] = useState(1);
@@ -39,6 +40,8 @@ export default function HomeScreen() {
   const token = localStorage.getItem("Token");
 
   const [loading, setLoading] = useState(true);
+  const [loadingSpinner, setLoadingSpinner] = useState(true);
+
 
   // useEffect(() => {
   //   // Simulate data fetching
@@ -133,8 +136,9 @@ export default function HomeScreen() {
   };
 
   const handleCart = async (productId) => {
-    if (selectedOption[productId]) {
-      try {
+    setLoadingSpinner(true); // Set loading to true when the button is clicked
+    try {
+      if (selectedOption[productId]) {
         if (!token) {
           navigate("/login-signup");
         } else {
@@ -151,7 +155,7 @@ export default function HomeScreen() {
               ...prevCartData,
               [productId]: res.data, // Update the cart data state with the response data
             }));
-          }else if(res.status === 202){
+          } else if (res.status === 202) {
             message.error('Quantity not available')
             Toast.show({
               icon: 'fail',
@@ -159,14 +163,16 @@ export default function HomeScreen() {
             });
           }
         }
-      } catch (error) {
-        message.error("Error adding to cart");
-        console.error("Error adding to cart:", error);
-        Toast.show({
-          icon: 'success',
-          content: 'Quantity not available',
-        });
       }
+    } catch (error) {
+      message.error("Error adding to cart");
+      console.error("Error adding to cart:", error);
+      Toast.show({
+        icon: 'success',
+        content: 'Quantity not available',
+      });
+    } finally {
+      setLoadingSpinner(false); // Set loading to false when the operation is complete
     }
   };
 
@@ -521,7 +527,16 @@ export default function HomeScreen() {
                         className="w-full h-10 border-2 rounded-lg items-center border-[#63247d] flex justify-center px-2 cursor-pointer"
                         onClick={() => handleCart(data._id)}
                       >
-                        <p>Add</p>
+                            {loadingSpinner ? (
+      <Loader
+        type="TailSpin"
+        color="#63247d"
+        height={20}
+        width={20}
+      />
+    ) : (
+      <p>Add</p>
+    )}
                       </div>
                     </div>
                     <div className=" w-full flex justify-end">
