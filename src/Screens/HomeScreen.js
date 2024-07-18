@@ -646,7 +646,7 @@ export default function HomeScreen() {
       </div>
 
       <div
-        className={`relative   ${products.length === 0 ? "top-96" : "top-52"}`}
+        className={`bg-[#4c1c61] relative   ${products.length === 0 ? "top-96" : "top-52"}`}
       >
         <Footer />
       </div>

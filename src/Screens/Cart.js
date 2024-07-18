@@ -214,7 +214,7 @@ export function Cart() {
           )}
         </div>
       </div>
-      <div className={`relative ${carts?.length === 0 ? "top-[500px]" : "top-96"}`}>
+      <div className={`bg-[#4c1c61] relative ${carts?.length === 0 ? "top-[500px]" : "top-96"}`}>
         <Footer />
       </div>
       

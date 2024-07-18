@@ -13,11 +13,16 @@ import { addCart } from "../Api/cart";
 import { CartContext } from "../context/CartContext";
 import { message } from "antd";
 import Footer from "../components/Footer";
+import { Toast } from "antd-mobile";
+import { TailSpin } from "react-loader-spinner";
+
+
 
 export default function ProductDetails() {
   const [product, setProduct] = useState({});
   const [productId, setProductId] = useState(useParams());
   const [selectedOption, setSelectedOption] = useState({});
+  const [spinner, setSpinner] = useState("");
   const { fetchCartCount } = useContext(CartContext);
   let userid = '6667454f926ecee4d29cac2d';
   const token = localStorage.getItem('Token');
@@ -81,7 +86,10 @@ export default function ProductDetails() {
   }, [productId]);
 
   const handleCart = async (productId) => {
+    setSpinner(true)
 if(!token){
+  setSpinner(false)
+
 return navigate('/login-signup')
 }
     if (selectedOption) {
@@ -89,8 +97,14 @@ return navigate('/login-signup')
         await addCart(product._id, userid,selectedOption );
         fetchCartCount(); // Fetch and update the cart count
         message.success('Added into cart');
+        Toast.show({
+          icon: "success",
+          content: "Added to cart",
+        });
       } catch (error) {
         console.error("Error adding to cart:", error);
+      }finally{
+        setSpinner(false)
       }
     }
   };
@@ -218,8 +232,20 @@ return navigate('/login-signup')
             
                     <button className=" rounded-full px-4 py-2 mb-4 flex gap-2  text-[#63247d] hover:text-white hover:bg-[#63247d] font-bold text-2xl border-2 border-[#63247d]"
                     onClick={handleCart}>
+                     
+
+                    {spinner ? (
+                      <TailSpin
+                      color="#63247d"
+                      height={20}
+                      width={20}
+                      />
+                    ) : (
+                      <>
                       <FaShoppingBag className="mr-2" />
                       <h1>Add to cart </h1>
+                      </>
+                    )}
                     </button>
                   </div>
                 </div>
@@ -231,7 +257,7 @@ return navigate('/login-signup')
         </div>
         {/* Single Product End */}
       </div>
-      <div className={`relative   'top-96'   'top-52' `}>
+      <div className={`bg-[#4c1c61] relative   'top-96'   'top-52' `}>
       <Footer />
 
       </div>
