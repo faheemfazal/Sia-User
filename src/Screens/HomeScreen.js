@@ -41,6 +41,7 @@ export default function HomeScreen() {
 
   const [loading, setLoading] = useState(true);
   const [loadingSpinner, setLoadingSpinner] = useState(false);
+  const[spinner,setSpinner]=useState('')
 
 
   // useEffect(() => {
@@ -137,6 +138,7 @@ export default function HomeScreen() {
 
   const handleCart = async (productId) => {
     setLoadingSpinner(true); // Set loading to true when the button is clicked
+    setSpinner(productId)
     try {
       if (selectedOption[productId]) {
         if (!token) {
@@ -527,7 +529,7 @@ export default function HomeScreen() {
                         className="w-full h-10 border-2 rounded-lg items-center border-[#63247d] flex justify-center px-2 cursor-pointer"
                         onClick={() => handleCart(data._id)}
                       >
-                        {loadingSpinner ? (
+                        {spinner ==data._id ? (
   <TailSpin
     color="#63247d"
     height={20}
