@@ -137,7 +137,7 @@ export default function HomeScreen() {
   };
 
   const handleCart = async (productId) => {
-    setLoadingSpinner(true); // Set loading to true when the button is clicked
+    // setLoadingSpinner(true); // Set loading to true when the button is clicked
     setSpinner(productId)
     try {
       if (selectedOption[productId]) {
@@ -174,7 +174,9 @@ export default function HomeScreen() {
         content: 'Quantity not available',
       });
     } finally {
-      setLoadingSpinner(false); // Set loading to false when the operation is complete
+      // setLoadingSpinner(false); // Set loading to false when the operation is complete
+    setSpinner('')
+
     }
   };
 
