@@ -35,7 +35,7 @@ export default function WelcomeScreen() {
   }, [setRing1Style, setRing2Style, setTextStyle, setImageStyle, navigate]);
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen bg-[#ce9fff] space-y-10">
+    <div className="flex flex-col justify-center items-center h-screen bg-[#4c1c61] space-y-10">
       <animated.div className="bg-white bg-opacity-20 rounded-full mx-2" style={ring2Style}>
         <animated.div className="bg-white bg-opacity-20 rounded-full" style={ring1Style}>
           <animated.div style={{
@@ -53,10 +53,10 @@ export default function WelcomeScreen() {
         </animated.div>
       </animated.div>
       <div className="flex flex-col items-center space-y-2">
-        <p className="text-white font-medium tracking-widest" style={{ fontSize: "2vh" }}>
+        {/* <p className="text-white font-medium tracking-widest" style={{ fontSize: "2vh" }}>
           Sharing Is Altruism
-        </p>
-        <p className="text-white font-medium text-sm tracking-widest pt-2" style={{ fontSize: "2vh" }}>
+        </p> */}
+        {/* <p className="text-white font-medium text-sm tracking-widest pt-2" style={{ fontSize: "2vh" }}>
           Sponsored by
         </p>
         <animated.img
@@ -64,7 +64,7 @@ export default function WelcomeScreen() {
           alt="Logo"
           style={imageStyle}
           className="w-28 h-16" // Adjust the size and spacing as needed
-        />
+        /> */}
       </div>
     </div>
   );
