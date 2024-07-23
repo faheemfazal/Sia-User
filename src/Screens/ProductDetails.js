@@ -189,7 +189,11 @@ export default function ProductDetails() {
                       onClick={handleCart}
                     >
                       {spinner ? (
+                        <>
+                        
                         <TailSpin color="#63247d" height={20} width={20} />
+                        <h1>Add to cart</h1>
+                        </>
                       ) : (
                         <>
                           <FaShoppingBag className="mr-2" />
