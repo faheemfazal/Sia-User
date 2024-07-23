@@ -6,72 +6,65 @@ import { useNavigate } from "react-router-dom";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { cartDecrement, cartIncrement, cartView, checkCart } from "../Api/cart";
 import Footer from "../components/Footer";
-import {Toast} from 'antd-mobile'
-
-import { message, Modal,Button } from 'antd';
+import { Toast } from 'antd-mobile';
+import { message, Modal, Button } from 'antd';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export function Cart() {
-  const [sliders, setSlider] = useState(15);
   const [reducing, setReducing] = useState(false);
   const [ms, setMs] = useState();
   const [carts, setCarts] = useState([]);
   const [reload, setReload] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility state
   const navigate = useNavigate();
-  const [deletedProducts,setDeletedProducts]= useState([])
+  const [deletedProducts, setDeletedProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const [count, setCount] = useState(1);
   let id = '6667454f926ecee4d29cac2d';
 
   const handleCheckout = async () => {
     try {
-      if(carts.length){
+      if (carts.length) {
         const response = await checkCart();
         if (response?.status === 200) {
           setIsModalOpen(true); // Open modal on success
-          setDeletedProducts(response?.data?.cart)
-        }else if(response?.status === 202){
+          setDeletedProducts(response?.data?.cart);
+        } else if (response?.status === 202) {
           message.success('Checkout successful');
           Toast.show({
             icon: 'success',
             content: 'Checkout successful',
           });
-
-          navigate('/checkout')
+          navigate('/checkout');
         }
-
-      }else{
-      message.error('Cart is empty')
-      Toast.show({
-        icon: 'fail',
-        content: 'Cart is empty',
-      });
-
+      } else {
+        message.error('Cart is empty');
+        Toast.show({
+          icon: 'fail',
+          content: 'Cart is empty',
+        });
       }
-
     } catch (error) {
       message.error('Checkout failed');
       console.error(error);
-
     }
   };
 
   const handleProceed = () => {
     // Remove deleted products from cart
-    if(deletedProducts?.length<carts?.length){
-      navigate('/checkout')
+    if (deletedProducts?.length < carts?.length) {
+      navigate('/checkout');
       Toast.show({
         icon: 'success',
         content: 'Removed unavailable products and proceeded with checkout',
       });
       message.success('Removed unavailable products and proceeded with checkout');
-
-    }else{
-      message.error('This product has no available').then((res)=>setIsModalOpen(false))
-
+    } else {
+      message.error('This product has no available').then((res) => setIsModalOpen(false));
     }
   };
-
 
   const handleIncrement = (productId, unit, unitType) => {
     setReducing(true);
@@ -91,24 +84,20 @@ export function Cart() {
       setReducing(false);
       setMs('');
     });
-    if (count == 1) {
+    if (count === 1) {
       setReload(!reload);
       return;
     }
   };
 
-  // const handleChange = (event) => {
-  //   setSlider(event.target.value);
-  // };
-
   useEffect(() => {
     cartView(id).then((response) => {
-      if(response?.status===200){
-
+      if (response?.status === 200) {
         setCarts(response?.data?.cartItems);
-      }else{
-        setCarts([])
+      } else {
+        setCarts([]);
       }
+      setLoading(false);
     });
   }, [count, reload]);
 
@@ -134,7 +123,6 @@ export function Cart() {
                 Home
               </div>
             </li>
-
             <li className="breadcrumb-item active ">Cart Detail</li>
           </ol>
         </div>
@@ -145,26 +133,39 @@ export function Cart() {
               className="rounded-xl my-3 w-full bg-black h-full p-5 flex justify-between"
             >
               <div>
-                <h1 className="text-lg text-white">Subtotal ({carts?.length})</h1>
                 <h1 className="text-lg text-white">
-                  ₹ {carts?.reduce((acc, item) => acc + item.total, 0)}
+                  {loading ? <Skeleton width={100} /> : `Subtotal (${carts?.length})`}
+                </h1>
+                <h1 className="text-lg text-white">
+                  {loading ? (
+                    <Skeleton width={100} />
+                  ) : (
+                    `₹ ${carts?.reduce((acc, item) => acc + item.total, 0)}`
+                  )}
                 </h1>
               </div>
-              <button className="items-center text-white text-lg bg-red-700 rounded-lg p-2"
-                onClick={handleCheckout}>
+              <button
+                className="items-center text-white text-lg bg-red-700 rounded-lg p-2"
+                onClick={handleCheckout}
+              >
                 Checkout
               </button>
             </div>
           </div>
 
-          {carts?.length === 0 ? (
+          {loading ? (
+            <Skeleton count={5} height={100} />
+          ) : carts?.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full">
               <img src={empty} alt="Cart is empty" className="w-64 h-64" />
               <h1 className="text-2xl font-semibold mt-4">Cart is empty</h1>
             </div>
           ) : (
             carts?.map((data, i) => (
-              <div key={i} className="w-full h-full flex justify-between items-center py-3 border-b-2 border-b-slate-200">
+              <div
+                key={i}
+                className="w-full h-full flex justify-between items-center py-3 border-b-2 border-b-slate-200"
+              >
                 <div className="h-full">
                   <img
                     src={data.product.image}
@@ -177,8 +178,16 @@ export function Cart() {
                 <div className="w-[200px] h-full p-3">
                   <>
                     <h1 className="font-bold text-2xl text-[#454a50]">{data.product.name}</h1>
-                    <h1 className="font-bold text-[#747d88]">₹ {data.unitType === "G" ? data.product.price * data.unit / 1000 : data.product.price / data.unit}</h1>
-                    <h1 className="font-bold text-[#747d88]"> {data.unit} {data.unitType}</h1>
+                    <h1 className="font-bold text-[#747d88]">
+                      ₹{" "}
+                      {data.unitType === "G"
+                        ? (data.product.price * data.unit) / 1000
+                        : data.product.price / data.unit}
+                    </h1>
+                    <h1 className="font-bold text-[#747d88]">
+                      {" "}
+                      {data.unit} {data.unitType}
+                    </h1>
                     <div className=""></div>
                   </>
                 </div>
@@ -196,7 +205,9 @@ export function Cart() {
                       <input
                         type="text"
                         className="w-12 text-center text-gray-700 border border-gray-300 rounded focus:outline-none"
-                        value={data.unitType === 'G' ? data.quantity / data.unit : data.quantity}
+                        value={
+                          data.unitType === "G" ? data.quantity / data.unit : data.quantity
+                        }
                         readOnly
                       />
                       <button
@@ -207,19 +218,30 @@ export function Cart() {
                       </button>
                     </div>
                   )}
-                  <h1 className="font-bold text-[#747d88] p-5">₹ {data.unitType === "G" ? data.product.price * data.unit / 1000 : data.product.price / data.unit} * {data.unitType === 'G' ? data.quantity / data.unit : data.quantity} = ₹ {data.total.toFixed(2)}</h1>
+                  <h1 className="font-bold text-[#747d88] p-5">
+                    ₹{" "}
+                    {data.unitType === "G"
+                      ? (data.product.price * data.unit) / 1000
+                      : data.product.price / data.unit}{" "}
+                    * {data.unitType === "G" ? data.quantity / data.unit : data.quantity} = ₹{" "}
+                    {data.total.toFixed(2)}
+                  </h1>
                 </div>
               </div>
             ))
           )}
         </div>
       </div>
-      <div className={`bg-[#4c1c61] relative ${carts?.length === 0 ? "top-[500px]" : "top-96"}`}>
+      <div
+        className={`bg-[#4c1c61] relative ${
+          carts?.length === 0 ? "top-[500px]" : "top-96"
+        }`}
+      >
         <Footer />
       </div>
-      
+
       <Modal
-        title={<h2 style={{ color: 'red' }}>Unavailable Products</h2>}
+        title={<h2 style={{ color: "red" }}>Unavailable Products</h2>}
         visible={isModalOpen}
         onOk={handleProceed}
         onCancel={() => setIsModalOpen(false)}
@@ -232,20 +254,27 @@ export function Cart() {
           </Button>,
         ]}
       >
-        <p style={{ color: 'red' }}>The following products are not available:</p>
+        <p style={{ color: "red" }}>The following products are not available:</p>
         <ul>
           {deletedProducts.map((product, index) => (
-            <li key={index} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-<img 
-  src={product?.product?.productImageUrl[0]} 
-  alt={product?.productName} 
-  style={{ 
-    width: '50px', 
-    height: '50px', 
-    marginRight: '10px', 
-    filter: 'grayscale(100%)' 
-  }} 
-/>
+            <li
+              key={index}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginBottom: "10px",
+              }}
+            >
+              <img
+                src={product?.product?.productImageUrl[0]}
+                alt={product?.productName}
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  marginRight: "10px",
+                  filter: "grayscale(100%)",
+                }}
+              />
               <div>
                 <h3>{product?.product?.productName}</h3>
                 <p>Quantity: {product?.quantity}</p>
@@ -254,9 +283,8 @@ export function Cart() {
             </li>
           ))}
         </ul>
-        <p style={{ color: 'red' }}>Please remove these products and proceed?</p>
+        <p style={{ color: "red" }}>Please remove these products and proceed?</p>
       </Modal>
-
     </div>
   );
 }
