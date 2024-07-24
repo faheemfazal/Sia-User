@@ -253,6 +253,7 @@ export function Cart() {
             Proceed
           </Button>,
         ]}
+        width={"90vw"}
       >
         <p style={{ color: "red" }}>The following products are not available:</p>
         <ul>
