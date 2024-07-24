@@ -56,7 +56,7 @@ export default function WelcomeScreen() {
         <p className="text-white font-medium tracking-widest" style={{ fontSize: "2vh" }}>
           Sharing Is Altruism
         </p>
-        <p className="text-white font-medium text-[7px] tracking-widest pt-2" style={{ fontSize: "2vh" }}>
+        <p className="text-white font-medium text-[5px] tracking-widest pt-2" style={{ fontSize: "1vh" }}>
           Sponsored by
         </p>
         <animated.img
