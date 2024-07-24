@@ -5,7 +5,7 @@ import { placeOrder } from "../Api/order";
 import { CartContext } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
-import scannerimg from '../assets/images/WhatsApp Image 2024-06-29 at 07.34.44_cd56ed82.jpg';
+import scannerimg from '../assets/images/Screenshot 2024-07-24 092508.png';
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setLogin } from "../Api/redux-toolkit/slice/userReducer";
