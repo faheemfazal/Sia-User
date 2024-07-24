@@ -241,51 +241,45 @@ export function Cart() {
       </div>
 
       <Modal
-        title={<h2 style={{ color: "red" }}>Unavailable Products</h2>}
-        visible={isModalOpen}
-        onOk={handleProceed}
-        onCancel={() => setIsModalOpen(false)}
-        footer={[
-          <Button key="cancel" onClick={() => setIsModalOpen(false)}>
-            Cancel
-          </Button>,
-          <Button key="proceed" type="primary" onClick={handleProceed}>
-            Proceed
-          </Button>,
-        ]}
-        width={"90vw"}
+  title={<h2 className="text-red-600">Unavailable Products</h2>}
+  visible={isModalOpen}
+  onOk={handleProceed}
+  onCancel={() => setIsModalOpen(false)}
+  footer={[
+    <Button key="cancel" onClick={() => setIsModalOpen(false)} className="mr-2">
+      Cancel
+    </Button>,
+    <Button key="proceed" type="primary" onClick={handleProceed}>
+      Proceed
+    </Button>,
+  ]}
+  width={"90vw"}
+  centered // Add this prop to center the modal vertically
+  bodyStyle={{ padding: 20 }} // Add some padding to the modal body
+  wrapClassName="modal-responsive" // Add a custom class to the modal wrapper
+>
+  <p className="text-red-600">The following products are not available:</p>
+  <ul>
+    {deletedProducts.map((product, index) => (
+      <li
+        key={index}
+        className="flex items-center mb-4"
       >
-        <p style={{ color: "red" }}>The following products are not available:</p>
-        <ul>
-          {deletedProducts.map((product, index) => (
-            <li
-              key={index}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                marginBottom: "10px",
-              }}
-            >
-              <img
-                src={product?.product?.productImageUrl[0]}
-                alt={product?.productName}
-                style={{
-                  width: "50px",
-                  height: "50px",
-                  marginRight: "10px",
-                  filter: "grayscale(100%)",
-                }}
-              />
-              <div>
-                <h3>{product?.product?.productName}</h3>
-                <p>Quantity: {product?.quantity}</p>
-                <p>Total: ₹{product?.total}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <p style={{ color: "red" }}>Please remove these products and proceed?</p>
-      </Modal>
+        <img
+          src={product?.product?.productImageUrl[0]}
+          alt={product?.productName}
+          className="w-12 h-12 mr-2 grayscale"
+        />
+        <div>
+          <h3>{product?.product?.productName}</h3>
+          <p>Quantity: {product?.quantity}</p>
+          <p>Total: ₹{product?.total}</p>
+        </div>
+      </li>
+    ))}
+  </ul>
+  <p className="text-red-600">Please remove these products and proceed?</p>
+</Modal>
     </div>
   );
 }
