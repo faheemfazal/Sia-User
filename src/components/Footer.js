@@ -56,8 +56,8 @@ export default function Footer() {
             <h2 className="text-lg font-semibold text-white">Account</h2>
             <ul className="space-y-2 ">
               <li><a href="#my-account" className="hover:text-white">My Account</a></li>
-              <li className="nav-item nav-link hover:text-[#63247d] "onClick={handleLogout}>Logout
-                   </li>
+              <p className="nav-item nav-link hover:text-[#63247d] "onClick={handleLogout}>Logout
+                   </p>
  
 
 
