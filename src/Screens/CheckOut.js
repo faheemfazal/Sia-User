@@ -359,7 +359,7 @@ export default function Checkout() {
                         alt="Scanner"
                         width={50}
                         height={50}
-                        className="md:h-64 md:w-64 h-56 w-32 hover:border-[0.3rem] border"
+                        className="md:h-64 md:w-64 h-60 w-44 hover:border-[0.3rem] border"
                       />
                       <a
                         href={scannerimg}
