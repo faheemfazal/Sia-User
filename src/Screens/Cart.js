@@ -32,7 +32,7 @@ export function Cart() {
           setIsModalOpen(true); // Open modal on success
           setDeletedProducts(response?.data?.cart);
         } else if (response?.status === 202) {
-          message.success('Checkout successful');
+          // message.success('Checkout successful');
           Toast.show({
             icon: 'success',
             content: 'Checkout successful',
@@ -40,7 +40,7 @@ export function Cart() {
           navigate('/checkout');
         }
       } else {
-        message.error('Cart is empty');
+        // message.error('Cart is empty');
         Toast.show({
           icon: 'fail',
           content: 'Cart is empty',
@@ -60,7 +60,7 @@ export function Cart() {
         icon: 'success',
         content: 'Removed unavailable products and proceeded with checkout',
       });
-      message.success('Removed unavailable products and proceeded with checkout');
+      // message.success('Removed unavailable products and proceeded with checkout');
     } else {
       message.error('This product has no available').then((res) => setIsModalOpen(false));
     }

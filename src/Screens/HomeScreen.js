@@ -143,7 +143,7 @@ export default function HomeScreen() {
           const res = await addCart(productId, id, selectedOption[productId]);
           if (res?.status === 200) {
             fetchCartCount(); // Fetch and update the cart count
-            message.success("Added into cart");
+            // message.success("Added into cart");
             Toast.show({
               icon: "success",
               content: "Added to cart",
@@ -154,7 +154,7 @@ export default function HomeScreen() {
               [productId]: res.data, // Update the cart data state with the response data
             }));
           } else if (res.status === 202) {
-            message.error("Quantity not available");
+            // message.error("Quantity not available");
             Toast.show({
               icon: "fail",
               content: "Quantity not available",
@@ -163,7 +163,7 @@ export default function HomeScreen() {
         }
       }
     } catch (error) {
-      message.error("Error adding to cart");
+      // message.error("Error adding to cart");
       console.error("Error adding to cart:", error);
       Toast.show({
         icon: "success",
@@ -181,7 +181,7 @@ export default function HomeScreen() {
       setMs("Increasing.."); // Optionally set a message or state to indicate operation
       const res = await cartIncrement(productId, unit, unitType, id); // Assuming cartIncrement is an async function
       if (res?.status === 200) {
-        message.success("Added into cart");
+        // message.success("Added into cart");
         Toast.show({
           icon: "success",
           content: "Added into cart",
@@ -208,7 +208,7 @@ export default function HomeScreen() {
       setMs("Reducing.."); // Optionally set a message or state to indicate operation
       const res = await cartDecrement(productId, unit, unitType, id); // Assuming cartDecrement is an async function
       if (res?.status === 200) {
-        message.success("reduced from the cart");
+        // message.success("reduced from the cart");
         Toast.show({
           icon: "success",
           content: "reduced from the cart",
@@ -227,7 +227,7 @@ export default function HomeScreen() {
           icon: "success",
           content: "product has removed from the cart",
         });
-        message.success("product has removed from the cart");
+        // message.success("product has removed from the cart");
 
         setCartData((prevCartData) => {
           const updatedCartData = { ...prevCartData };
