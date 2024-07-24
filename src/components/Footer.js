@@ -46,7 +46,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-4">
           <div>
             <h2 className="text-lg font-semibold text-white">Shop Info</h2>
-            <ul className="space-y-2 mt-2">
+            <ul className="space-y-2 mt-1">
               <li><a href="#about-us" className="hover:text-white">About Us</a></li>
               {/* <li><a href="#contact-us" className="hover:text-white">Contact Us</a></li> */}
     
@@ -54,7 +54,7 @@ export default function Footer() {
           </div>
           <div>
             <h2 className="text-lg font-semibold text-white">Account</h2>
-            <ul className="space-y-2 mt-2">
+            <ul className="space-y-2 mt-1">
               <li><a href="#my-account" className="hover:text-white">My Account</a></li>
               <li>  { token &&       <div className="nav-item nav-link hover:text-[#63247d]"onClick={handleLogout}>Logout</div>}
                    </li>
@@ -65,7 +65,7 @@ export default function Footer() {
           </div>
           <div>
             <h2 className="text-lg font-semibold text-white">Contact</h2>
-            <p className="mt-2">
+            <p className="mt-1">
             Arts college road, 
 RAJAPPANAGAR 
 Thanjavur -613007
@@ -73,7 +73,7 @@ Thanjavur -613007
             {/* <p className="mt-2">
               Email: Example@gmail.com
             </p> */}
-            <p className="mt-2">
+            <p className="mt-">
               Phone: +91 8610042353
             </p>
           </div>
