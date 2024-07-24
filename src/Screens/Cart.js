@@ -254,8 +254,22 @@ export function Cart() {
     </Button>,
   ]}
   width={"90vw"}
-  centered // Add this prop to center the modal vertically
-  bodyStyle={{ padding: 20 }} // Add some padding to the modal body
+  bodyStyle={{
+    padding: "16px",
+    backgroundColor: "#f0f2f5",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  }}
+  className="rounded-lg"
+  style={{
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+  }}
+  maskStyle={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+  // Add some padding to the modal body
   wrapClassName="modal-responsive" // Add a custom class to the modal wrapper
 >
   <p className="text-red-600">The following products are not available:</p>
