@@ -224,7 +224,7 @@ export default function Checkout() {
           <>
         <div className="mx-3 md:mx-10 py-10">
           <div className="py-10">
-            <h1 className="mb-8 text-3xl text-[#747d88] font-bold">
+            <h1 className="mb-8 text-3xl text-[#747d88]  font-bold">
               Billing details
             </h1>
             <form onSubmit={handleSubmit}>
@@ -407,7 +407,7 @@ export default function Checkout() {
                   <div className="text-center pt-6">
                   <button
         type="submit"
-        className="py-3 px-6 uppercase w-full text-[#63247d] hover:text-white hover:bg-[#63247d] border-[#63247d] font-bold text-2xl border-2 flex items-center justify-center"
+        className="py-3 px-6 uppercase rounded-md w-full text-[#63247d] hover:text-white hover:bg-[#63247d] border-[#63247d] font-bold text-2xl border-2 flex items-center justify-center"
         onClick={handleSubmit}
         style={{ height: '60px', width: '200px' }} // Fixed height and width for the button
         disabled={loading} // Disable the button when loading
@@ -416,7 +416,7 @@ export default function Checkout() {
           <TailSpin
             height="30"
             width="30"
-            color="#63247d"
+            color="white"
             ariaLabel="loading"
           />
         ) : (
