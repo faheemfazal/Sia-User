@@ -259,7 +259,7 @@ export function Cart() {
     backgroundColor: "#f0f2f5",
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
+   
   }}
   className="rounded-lg"
   style={{
@@ -277,7 +277,7 @@ export function Cart() {
     {deletedProducts.map((product, index) => (
       <li
         key={index}
-        className="flex items-center mb-4"
+        className="flex  mb-4"
       >
         <img
           src={product?.product?.productImageUrl[0]}

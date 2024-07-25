@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLogin } from "../Api/redux-toolkit/slice/userReducer";
 import SuccessModal from '../components/Modal/SuccessModal'; 
 import { message } from 'antd';
+import { TailSpin } from "react-loader-spinner";
 
 export default function Checkout() {
   const [selectedPayment, setSelectedPayment] = useState("");
@@ -23,7 +24,7 @@ export default function Checkout() {
   const [errors, setErrors] = useState({});
   const [coinstate, setCoins] = useState({});
   const { fetchCartCount } = useContext(CartContext);
-
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch()
   const reduxstate = useSelector((state)=>state.userSlice)
@@ -140,14 +141,21 @@ export default function Checkout() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (loading) {
+      return; // Prevents multiple submissions
+    }
+    setLoading(true);
     if(!cartViews){
+      setLoading(false);
       return message.error('Failed to place ')
 
     }
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
+      setLoading(false);
     } else {
+      setLoading(true);
       setErrors({});
       try {
         const orderData = {
@@ -190,6 +198,8 @@ export default function Checkout() {
         // alert('Failed to place order');
         message.error('Failed to place order')
 
+      }finally {
+        setLoading(false);
       }
     }
   };
@@ -395,12 +405,24 @@ export default function Checkout() {
                     </div>
                   )}
                   <div className="text-center pt-6">
-                    <button
-                      type="submit"
-                      className="py-3 px-6 uppercase w-full text-[#63247d] hover:text-white hover:bg-[#63247d] border-[#63247d] font-bold text-2xl border-2 "
-                    >
-                      Place Order
-                    </button>
+                  <button
+        type="submit"
+        className="py-3 px-6 uppercase w-full text-[#63247d] hover:text-white hover:bg-[#63247d] border-[#63247d] font-bold text-2xl border-2 flex items-center justify-center"
+        onClick={handleSubmit}
+        style={{ height: '60px', width: '200px' }} // Fixed height and width for the button
+        disabled={loading} // Disable the button when loading
+      >
+        {loading ? (
+          <TailSpin
+            height="30"
+            width="30"
+            color="#63247d"
+            ariaLabel="loading"
+          />
+        ) : (
+          'Place Order'
+        )}
+      </button>
                   </div>
                 </div> 
               </div>
