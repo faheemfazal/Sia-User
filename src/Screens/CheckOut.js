@@ -23,6 +23,7 @@ export default function Checkout() {
   const [screenshot, setScreenshot] = useState("");
   const [errors, setErrors] = useState({});
   const [coinstate, setCoins] = useState({});
+  
   const { fetchCartCount } = useContext(CartContext);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
