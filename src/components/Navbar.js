@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { findUniqueCategory } from "../Api/category";
 import { CartContext } from "../context/CartContext";
 import { searchProduct } from "../Api/search";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLogout } from "../Api/redux-toolkit/slice/userReducer";
 import logo from "../assets/images/logg0.png";
 
@@ -21,6 +21,7 @@ export default function Navbar() {
   const modalRef = useRef(null);
   const { count } = useContext(CartContext); // Use the context to get the cart count
   const token = localStorage.getItem("Token");
+  const {name} = useSelector((state) => state.userSlice);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -115,11 +116,17 @@ export default function Navbar() {
   return (
     <div className="sticky top-0 z-50 bg-white">
       <div className="w-full h-20 flex justify-between md:px-14 px-4 font-sans font-semibold items-center ">
+        <div>
         <img
           src={logo}
           alt="Pickupiko"
           className="h-8 md:h-12 w-28" // Adjust height based on text-3xl and text-5xl
         />
+      {name &&  <p className="text-xl font-semibold text-black">{name}</p>}
+
+
+        </div>
+
 
         <div className="flex gap-5 overflow-auto invisible md:visible md:static absolute md:mx-10">
           <div

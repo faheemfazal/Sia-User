@@ -45,6 +45,8 @@ export default function Otp({ mailOrPhone, inputValue, setOtp, handleLogin,name 
             ...reduxstate,
             id: res.data.id,
             token: res.data.token,
+            name: res.data.name,
+            
           })
         );
         navigate("/home");
