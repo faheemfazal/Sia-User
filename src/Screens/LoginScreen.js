@@ -11,6 +11,8 @@ export default function Login() {
   const [msg, setMsg] = useState('');
   const [otp, setOtp] = useState(false);
   const [loading, setLoading] = useState(false); // Add a state for loading
+  const [openName,setOpenName] = useState(false)
+  const [name,setName] = useState('')
 
   const validateInput = (value) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -44,9 +46,11 @@ export default function Login() {
     setLoading(true); // Set loading to true
 
     try {
-      const res = await postlogin(inputValue, mailOrPhone);
+      const res = await postlogin(inputValue, mailOrPhone,name);
       if (res.status === 200) {
         setOtp(true);
+      }else if(res.status == 202){
+        setOpenName(true)
       }
     } catch (error) {
       console.error('Error during login:', error);
@@ -78,6 +82,17 @@ export default function Login() {
                   required
                 />
               </div>
+       { openName &&      <div className="flex flex-col items-start">
+                <input
+                  id="otp"
+                  name="otp"
+                  onChange={(e)=>setName(e.target.value)}
+                  type="text"
+                  placeholder="Enter Phone number/ Email Id"
+                  className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  required
+                />
+              </div>}
               {error && <div className="text-red-500 mt-4">{error}</div>}
               <button type="submit" className="w-full text-[#63247d] hover:text-white hover:bg-[#63247d] border-[#63247d] py-2 rounded border-2 transition-colors">
                 {loading? (

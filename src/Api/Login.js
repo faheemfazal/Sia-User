@@ -3,12 +3,12 @@ import clientAxiosIntercepter from "../axiosLink/axios";
 const url = "user";
 const axiosuser = clientAxiosIntercepter(url);
 
-export const postlogin = async (inputValue, mailOrPhone) => {
+export const postlogin = async (inputValue, mailOrPhone,name) => {
   try {
     const res = await axiosuser({
       url: "/login",
       method: "post",
-      data: { inputValue, mailOrPhone },
+      data: { inputValue, mailOrPhone,name },
       // headers: { Authorization : `Bearer ${token}` },
     });
     // const token = res.data.token;
