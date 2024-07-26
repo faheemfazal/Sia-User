@@ -2,6 +2,7 @@ import { postlogin } from "../Api/Login";
 import Otp from "../components/Modal/Otp";
 import Navbar from "../components/Navbar";
 import { useState } from "react";
+import { TailSpin } from "react-loader-spinner";
 
 export default function Login() {
   const [inputValue, setInputValue] = useState('');
@@ -9,7 +10,7 @@ export default function Login() {
   const [error, setError] = useState('');
   const [msg, setMsg] = useState('');
   const [otp, setOtp] = useState(false);
-
+  const [loading, setLoading] = useState(false); // Add a state for loading
 
   const validateInput = (value) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -39,7 +40,9 @@ export default function Login() {
     if (!validateInput(inputValue)) {
       return;
     }
-    
+    if (loading) return; // Prevent multiple requests
+    setLoading(true); // Set loading to true
+
     try {
       const res = await postlogin(inputValue, mailOrPhone);
       if (res.status === 200) {
@@ -48,13 +51,15 @@ export default function Login() {
     } catch (error) {
       console.error('Error during login:', error);
       setMsg('An error occurred during login.');
+    } finally {
+      setLoading(false); // Set loading to false after request is complete
     }
   };
 
   return (
     <div className="h-full w-full">
       <Navbar />
-      {otp ? (
+      {otp? (
         <Otp inputValue={inputValue} mailOrPhone={mailOrPhone} setOtp={setOtp} handleLogin={handleLogin} />
       ) : (
         <div className="flex h-96 items-center justify-center sm:mx-0 md:mx-12 mx-2 my-3">
@@ -75,7 +80,13 @@ export default function Login() {
               </div>
               {error && <div className="text-red-500 mt-4">{error}</div>}
               <button type="submit" className="w-full text-[#63247d] hover:text-white hover:bg-[#63247d] border-[#63247d] py-2 rounded border-2 transition-colors">
-                Continue
+                {loading? (
+                  <div className="flex justify-center">
+                    <TailSpin color="white" height={20} width={20} />
+                  </div>
+                ) : (
+                  'Continue'
+                )}
               </button>
             </form>
           </div>
