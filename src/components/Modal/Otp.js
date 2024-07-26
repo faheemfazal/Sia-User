@@ -6,7 +6,7 @@ import { setLogin } from "../../Api/redux-toolkit/slice/userReducer";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
-export default function Otp({ mailOrPhone, inputValue, setOtp, handleLogin }) {
+export default function Otp({ mailOrPhone, inputValue, setOtp, handleLogin,name }) {
   const [code, setCode] = useState("");
   const [timer, setTimer] = useState(30);
   const [canResend, setCanResend] = useState(false);
@@ -36,7 +36,8 @@ export default function Otp({ mailOrPhone, inputValue, setOtp, handleLogin }) {
     e.preventDefault();
 
     try {
-      const res = await verifyOtp(code, inputValue, mailOrPhone);
+      // if()
+      const res = await verifyOtp(code, inputValue, mailOrPhone,name);
       if (res.status === 200) {
         localStorage.setItem("Token", res.data.token);
         dispatch(

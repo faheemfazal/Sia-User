@@ -21,12 +21,12 @@ export const postlogin = async (inputValue, mailOrPhone,name) => {
   } catch {}
 };
 
-export const verifyOtp = async (otp, inputValue, mailOrPhone) => {
+export const verifyOtp = async (otp, inputValue, mailOrPhone,name) => {
   try {
     const res = await axiosuser({
       url: "/varifyotp",
       method: "post",
-      data: { otp, inputValue, mailOrPhone },
+      data: { otp, inputValue, mailOrPhone,name },
       // headers: { Authorization : `Bearer ${token}` },
     });
 

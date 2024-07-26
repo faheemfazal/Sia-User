@@ -64,7 +64,7 @@ export default function Login() {
     <div className="h-full w-full">
       <Navbar />
       {otp? (
-        <Otp inputValue={inputValue} mailOrPhone={mailOrPhone} setOtp={setOtp} handleLogin={handleLogin} />
+        <Otp inputValue={inputValue} mailOrPhone={mailOrPhone} name={name}    setOtp={setOtp} handleLogin={handleLogin} />
       ) : (
         <div className="flex h-96 items-center justify-center sm:mx-0 md:mx-12 mx-2 my-3">
           <div className="bg-white p-4 rounded shadow-md w-full max-w-2xl">
@@ -84,11 +84,11 @@ export default function Login() {
               </div>
        { openName &&      <div className="flex flex-col items-start">
                 <input
-                  id="otp"
-                  name="otp"
+                  id="name"
+                  name="name"
                   onChange={(e)=>setName(e.target.value)}
                   type="text"
-                  placeholder="Enter Phone number/ Email Id"
+                  placeholder="Enter Your Name"
                   className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   required
                 />
