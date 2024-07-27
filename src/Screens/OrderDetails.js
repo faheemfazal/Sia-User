@@ -99,7 +99,7 @@ export default function OrderDetails() {
 
 
             
-            <div className="p-4 border rounded-lg shadow-md">
+            {/* <div className="p-4 border rounded-lg shadow-md">
               <h2 className="text-xl font-bold">Your Rewards</h2>
               <div className="flex items-center space-x-4">
                 <img src={coin} alt="Coin" className="w-12 h-12" />
@@ -112,7 +112,7 @@ export default function OrderDetails() {
                   <p>For Sia Plus Members</p>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Your Products Section */}
