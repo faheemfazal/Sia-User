@@ -1,13 +1,16 @@
 import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
-import { getOrderView } from "../Api/order";
+import { cancelOrder, getOrderView } from "../Api/order";
 import img from "../assets/images/fruite-item-5.jpg";
 import coin from "../assets/images/9948668.png";
 import Footer from "../components/Footer";
+import Swal from 'sweetalert2';
+import { Toast } from "antd-mobile";
 
 export default function OrderDetails() {
   const [order, setOrder] = useState({});
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { orderId } = useParams();
 
@@ -15,7 +18,41 @@ export default function OrderDetails() {
     getOrderView(orderId).then((res) => {
       setOrder(res?.data[0]);
     });
-  }, [orderId]);
+  }, [orderId,loading]);
+
+
+  const handleCancelOrder =async ()=>{
+    try{
+      const result = await Swal.fire({
+        title: 'Are you sure?',
+        text: 'This will cancel the order. Do you want to proceed?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, cancel it!',
+        cancelButtonText: 'No, keep it',
+        customClass: {
+          container: "fixed inset-0 flex justify-center items-center",
+          popup: "p-4 rounded-lg bg-white",
+          confirmButton: "bg-red-500 text-white px-4 py-2 rounded m-2",
+          cancelButton: "bg-gray-500 text-white px-4 py-2 rounded ml-2 m-2",
+        },
+      });
+  
+      if (result.isConfirmed) {
+       const res=await cancelOrder(orderId)
+       if(res.status===200){
+        Toast.show({
+          icon: "success",
+          content: "Order successfully cancelled",
+        });
+        setLoading(!loading)
+
+       }
+       }
+    }catch{
+
+    }
+  }
 
 
   return (
@@ -99,20 +136,16 @@ export default function OrderDetails() {
 
 
             
-            {/* <div className="p-4 border rounded-lg shadow-md">
-              <h2 className="text-xl font-bold">Your Rewards</h2>
-              <div className="flex items-center space-x-4">
-                <img src={coin} alt="Coin" className="w-12 h-12" />
-                <div>
-                  <p>
-                    You have earned{" "}
-                    <span className="font-bold text-[#63247d]">34</span> coins!
-                  </p>
-                  <p>Early Access to this Sale</p>
-                  <p>For Sia Plus Members</p>
-                </div>
-              </div>
-            </div> */}
+            <div className="p-4 border rounded-lg shadow-md">
+      {      <button
+                  onClick={handleCancelOrder}
+                  className="bg-red-500 text-white px-2 py-2 rounded whitespace-nowrap"
+                >
+                  Cancel Order
+                </button>}
+           
+
+            </div>
           </div>
 
           {/* Your Products Section */}

@@ -32,3 +32,15 @@ export const getOrderView = async (orderId) => {
     return response;
   } catch (err) {}
 };
+
+
+export const cancelOrder = async (orderId) => {
+  try {
+    const response = await axiosuser({
+      url: `/cancelorder?orderId=${orderId}`,
+      method: "get",
+      // headers: { Authorization: `Bearer ${token}` },
+    });
+    return response;
+  } catch (err) {}
+};
