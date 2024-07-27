@@ -16,6 +16,7 @@ export default function OrderDetails() {
 
   useEffect(() => {
     getOrderView(orderId).then((res) => {
+      console.log(res,'opopopopopofg');
       setOrder(res?.data[0]);
     });
   }, [orderId,loading]);
