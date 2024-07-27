@@ -21,6 +21,7 @@ export default function OrderDetails() {
     });
   }, [orderId,loading]);
 
+  console.log(order.status,'oogsjgkfdmgh');
 
   const handleCancelOrder =async ()=>{
     try{
