@@ -28,7 +28,7 @@ console.log('dfdfd',Token);
      <BrowserRouter>
              <Routes>
 
-             {Token ? (
+             {Token && (
               <>
                  {/* <Route path="/admin-addProduct" element={ <AddProduct />}/> */}
                  <Route path="/categories" element={ <Categories />}/>
@@ -37,16 +37,14 @@ console.log('dfdfd',Token);
                  <Route path="/order-details/:orderId" element={ <OrderDetails />}/>
                  <Route path="/e-coin" element={ <ECoin />}/>
               
-              </>):(
-                <>
+              </> )}
                 <Route path="/cart" element={ <Cart />}/>
                  <Route exact path="/*"  element={ <WelcomeScreen />}/>  
                 <Route path="/home" element={ <HomeScreen />}/>
                 <Route path="/login-signup" element={ <Login />}/> 
                 <Route path="/product-details/:id" element={ <ProductDetails />}/>
 
-                </>
-              )}
+             
 
                 {/* <Route path="/home" element={<Home />} /> */}
         <Route path="/*" element={<ErrorScreen />}></Route>
