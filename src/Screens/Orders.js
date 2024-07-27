@@ -146,7 +146,7 @@ export default function Orders() {
             <div key={data._id} className="w-full h-full flex justify-between items-center py-3 border-b-2 border-b-slate-200"
               onClick={() => navigate(`/order-details/${data._id}`)}>
               <div className="w-[200px] h-full p-3">
-                <h1 className="text-lg font-bold text-[#454a50] whitespace-nowrap">Order ID: <span className="text-[#63247d]">{data._id.slice(0, 6)}</span></h1>
+                <h1 className="text-lg font-bold text-[#454a50] whitespace-nowrap">Order ID: <span className="text-[#63247d]">{data._id.slice(18, 24)}</span></h1>
                 <h1 className="text-md font-medium text-[#747d88]">Total Amount: <span className="font-bold">₹ {data.totalAmount}</span></h1>
                 <h1 className="text-md font-medium text-[#747d88]">Total Items: <span className="font-bold">{data?.items?.length}</span></h1>
                 <h1 className="text-md font-medium text-[#747d88]">Order Date: <span className="font-bold">{new Date(data.createdAt).toLocaleDateString()}</span></h1>
