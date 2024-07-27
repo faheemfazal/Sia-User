@@ -31,7 +31,14 @@ export function Cart() {
         if (response?.status === 200) {
           setIsModalOpen(true); // Open modal on success
           setDeletedProducts(response?.data?.cart);
-        } else if (response?.status === 202) {
+        } else if(response.status==201){
+          Toast.show({
+            icon: 'fail',
+            content: response?.data?.message,
+          });
+        }
+        
+        else if (response?.status === 202) {
           // message.success('Checkout successful');
           Toast.show({
             icon: 'success',
