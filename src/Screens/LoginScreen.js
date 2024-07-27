@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import { useState } from "react";
 import { TailSpin } from "react-loader-spinner";
 
-export default function Login() {
+export default function Login({setToken}) {
   const [inputValue, setInputValue] = useState('');
   const [mailOrPhone, setMailOrPhone] = useState('');
   const [error, setError] = useState('');
@@ -64,7 +64,7 @@ export default function Login() {
     <div className="h-full w-full">
       <Navbar />
       {otp? (
-        <Otp inputValue={inputValue} mailOrPhone={mailOrPhone} name={name}    setOtp={setOtp} handleLogin={handleLogin} />
+        <Otp inputValue={inputValue} mailOrPhone={mailOrPhone} name={name}  setToken={setToken}  setOtp={setOtp} handleLogin={handleLogin} />
       ) : (
         <div className="flex h-96 items-center justify-center sm:mx-0 md:mx-12 mx-2 my-3">
           <div className="bg-white p-4 rounded shadow-md w-full max-w-2xl">

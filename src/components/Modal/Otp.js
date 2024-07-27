@@ -6,7 +6,7 @@ import { setLogin } from "../../Api/redux-toolkit/slice/userReducer";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
-export default function Otp({ mailOrPhone, inputValue, setOtp, handleLogin,name }) {
+export default function Otp({ mailOrPhone, inputValue, setOtp, handleLogin,name,setToken }) {
   const [code, setCode] = useState("");
   const [timer, setTimer] = useState(30);
   const [canResend, setCanResend] = useState(false);
@@ -49,8 +49,9 @@ export default function Otp({ mailOrPhone, inputValue, setOtp, handleLogin,name 
             
           })
         );
+        setToken(res.data.token);
         // loca("/home");
-        window.location.reload('/home');
+       navigate("/home");
 
       }
       if (res.status === 202) {

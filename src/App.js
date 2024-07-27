@@ -41,7 +41,7 @@ console.log('dfdfd',Token);
                 <Route path="/cart" element={ <Cart />}/>
                  <Route exact path="/*"  element={ <WelcomeScreen />}/>  
                 <Route path="/home" element={ <HomeScreen />}/>
-                <Route path="/login-signup" element={ <Login />}/> 
+                <Route path="/login-signup" element={ <Login setToken={setToken} />}/> 
                 <Route path="/product-details/:id" element={ <ProductDetails />}/>
 
              
