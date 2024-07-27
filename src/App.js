@@ -12,19 +12,24 @@ import ErrorScreen from './Screens/ErrorScreen';
 import Orders from './Screens/Orders';
 import OrderDetails from './Screens/OrderDetails';
 import ECoin from './Screens/E-coin';
+import { useEffect, useState } from 'react';
 // import Admin from './Screens/Admin';
 // import AddProduct from './Screens/AddProduct';
 
 function App() {
+ 
+  const  [Token,setToken]=useState(localStorage.getItem("Token"))
+  useEffect(()=>{
+
+  },[Token])
+console.log('dfdfd',Token);
   return (
     <div className="App">
      <BrowserRouter>
              <Routes>
-             <Route exact path="/*"  element={ <WelcomeScreen />}/>
-                
-                 <Route path="/home" element={ <HomeScreen />}/>
-                 <Route path="/login-signup" element={ <Login />}/>
-                 <Route path="/product-details/:id" element={ <ProductDetails />}/>
+
+             {Token ? (
+              <>
                  {/* <Route path="/admin-addProduct" element={ <AddProduct />}/> */}
                  <Route path="/cart" element={ <Cart />}/>
                  <Route path="/categories" element={ <Categories />}/>
@@ -32,10 +37,16 @@ function App() {
                  <Route path="/order-Details" element={ <Orders />}/>
                  <Route path="/order-details/:orderId" element={ <OrderDetails />}/>
                  <Route path="/e-coin" element={ <ECoin />}/>
+              
+              </>):(
+                <>
+                 <Route exact path="/*"  element={ <WelcomeScreen />}/>  
+                <Route path="/home" element={ <HomeScreen />}/>
+                <Route path="/login-signup" element={ <Login />}/> 
+                <Route path="/product-details/:id" element={ <ProductDetails />}/>
 
-
-
-            
+                </>
+              )}
 
                 {/* <Route path="/home" element={<Home />} /> */}
         <Route path="/*" element={<ErrorScreen />}></Route>
