@@ -121,7 +121,9 @@ export default function OrderDetails() {
             ? "text-orange-500"
             : order.status === "Completed"
             ? "text-green-500"
-            : ""
+            : order.status === "Cancelled"
+            ? "text-red-500":
+            ""
         }
       >
         {order.status ? order.status : 0}
@@ -138,16 +140,16 @@ export default function OrderDetails() {
 
 
             
-<div className="p-4 border rounded-lg shadow-md">
   {(order.status === 'Pending' || order.status === 'Packed' || order.status === 'Confirmed') && (
+<div className="p-4 border rounded-lg shadow-md">
     <button
       onClick={handleCancelOrder}
       className="bg-red-500 text-white px-2 py-2 rounded whitespace-nowrap"
     >
       Cancel Order
     </button>
-  )}
 </div>
+  )}
           </div>
 
           {/* Your Products Section */}
