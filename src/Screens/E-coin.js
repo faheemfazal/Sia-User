@@ -91,8 +91,8 @@ export default function ECoin() {
                             </div>
                         </div>
                     </div>
-                    <p className="text-2xl font-semibold mb-4">You can collect this coin's money on</p>
-                    <p className="text-4xl font-bold text-[#63247d]">{date}</p>
+                {date ?<>  <p className="text-2xl font-semibold mb-4">You can collect this coin's money on</p>
+                    <p className="text-4xl font-bold text-[#63247d]">{date}</p></> :"Now you are not given a date to receive your coins"}
                 </div>
             </div>
 

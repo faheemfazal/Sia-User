@@ -150,7 +150,14 @@ export default function Navbar() {
           </div>
           <div
             className="nav-item nav-link text-[#747d88] hover:text-[#63247d]"
-            onClick={() => navigate("/e-coin")}
+            
+            onClick={() => {
+              if (token) {
+                navigate("/e-coin");
+              } else {
+                navigate("/login-signup");
+              }
+            }}
           >
             E-coins
           </div>
@@ -251,7 +258,14 @@ export default function Navbar() {
                       </div>
                       <div
                         className="nav-link hover:text-[#63247d]"
-                        onClick={() => navigate("/e-coin")}
+                      
+                        onClick={() => {
+                          if (token) {
+                            navigate("/e-coin");
+                          } else {
+                            navigate("/login-signup");
+                          }
+                        }}
                       >
                         E-coin
                       </div>
