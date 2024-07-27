@@ -137,12 +137,14 @@ export default function OrderDetails() {
 
             
             <div className="p-4 border rounded-lg shadow-md">
-      {      <button
+      {order.status == 'Pending' ||order.status == 'Packed'||order.status == 'Confirmed'  &&   <button
                   onClick={handleCancelOrder}
                   className="bg-red-500 text-white px-2 py-2 rounded whitespace-nowrap"
                 >
                   Cancel Order
                 </button>}
+
+                
            
 
             </div>
