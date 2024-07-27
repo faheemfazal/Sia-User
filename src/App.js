@@ -31,7 +31,6 @@ console.log('dfdfd',Token);
              {Token ? (
               <>
                  {/* <Route path="/admin-addProduct" element={ <AddProduct />}/> */}
-                 <Route path="/cart" element={ <Cart />}/>
                  <Route path="/categories" element={ <Categories />}/>
                  <Route path="/checkout" element={ <Checkout />}/>
                  <Route path="/order-Details" element={ <Orders />}/>
@@ -40,6 +39,7 @@ console.log('dfdfd',Token);
               
               </>):(
                 <>
+                <Route path="/cart" element={ <Cart />}/>
                  <Route exact path="/*"  element={ <WelcomeScreen />}/>  
                 <Route path="/home" element={ <HomeScreen />}/>
                 <Route path="/login-signup" element={ <Login />}/> 
