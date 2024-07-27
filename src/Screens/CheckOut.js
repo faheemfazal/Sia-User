@@ -12,6 +12,7 @@ import { setLogin } from "../Api/redux-toolkit/slice/userReducer";
 import SuccessModal from '../components/Modal/SuccessModal'; 
 import { message } from 'antd';
 import { TailSpin } from "react-loader-spinner";
+import { Toast } from 'antd-mobile';
 
 export default function Checkout() {
   const [selectedPayment, setSelectedPayment] = useState("");
@@ -23,7 +24,7 @@ export default function Checkout() {
   const [screenshot, setScreenshot] = useState("");
   const [errors, setErrors] = useState({});
   const [coinstate, setCoins] = useState({});
-  
+
   const { fetchCartCount } = useContext(CartContext);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -212,6 +213,13 @@ export default function Checkout() {
 
   useEffect(() => {
     cartViewForCheckout(userId).then((response) => {
+      if(response.status==201){
+        Toast.show({
+          icon: 'success',
+          content: 'Checkout successful',
+        });
+        return navigate('/cart')
+      }
       setCartViews(response.data.cartItems);
     });
     
