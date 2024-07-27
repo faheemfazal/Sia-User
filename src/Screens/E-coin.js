@@ -19,11 +19,14 @@ export default function ECoin() {
     useEffect(() => {
         getdate().then((res) => {
             if (res?.status === 200) {
+                console.log(res,';;');
                 setDate(res.data.date);
                 setCoins(res.data.client)
             }
         });
     }, []);
+
+    console.log(date,'6-6-6-6-');
 
 
     return (
