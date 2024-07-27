@@ -122,7 +122,7 @@ export default function Navbar() {
           alt="Pickupiko"
           className="h-8 md:h-12 w-28" // Adjust height based on text-3xl and text-5xl
         />
-      {name &&  <p className="text-lg font-semibold text-black whitespace-nowrap">Hi, {name}</p>}
+      {name &&  <p className="text-sm font-semibold text-black whitespace-nowrap">Hi, {name}</p>}
 
 
         </div>
