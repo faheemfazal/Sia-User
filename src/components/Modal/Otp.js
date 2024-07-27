@@ -49,7 +49,9 @@ export default function Otp({ mailOrPhone, inputValue, setOtp, handleLogin,name 
             
           })
         );
-        navigate("/home");
+        // loca("/home");
+        window.location.reload('/home');
+
       }
       if (res.status === 202) {
         setMsg("Invalid otp");
