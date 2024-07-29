@@ -352,7 +352,7 @@ export default function HomeScreen() {
                           : "bg-[#f4f6f8]  text-[#747d88]"
                       }
                     `}
-                      onClick={() => setActiveTab("ALL PRODUCTS")}
+                      onClick={() =>handleCategoryProduct("ALL PRODUCTS", "ALL PRODUCTS")}
                     >
                       <span className="whitespace-nowrap">ALL PRODUCTS</span>
                     </button>
