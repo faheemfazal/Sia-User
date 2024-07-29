@@ -101,7 +101,7 @@ export default function OrderDetails() {
       {order.userId?.phoneNumber}
     </p>
     <p>
-      <span className="font-bold">Order ID:</span> {order._id ? order._id.slice(0, 4) : ""}
+      <span className="font-bold">Order ID:</span> {order._id ? order._id.slice(18, 24) : ""}
     </p>
     <p>
       <span className="font-bold">Total Amount:</span> ₹ {order.totalAmount}

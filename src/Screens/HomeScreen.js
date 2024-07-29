@@ -42,6 +42,8 @@ export default function HomeScreen() {
   const [loading, setLoading] = useState(true);
   // const [loadingSpinner, setLoadingSpinner] = useState(false);
   const [spinner, setSpinner] = useState("");
+  const [loadingforincdic, setLoadingForincdic] = useState({});
+
 
   // useEffect(() => {
   //   // Simulate data fetching
@@ -177,58 +179,49 @@ export default function HomeScreen() {
 
   const handleIncrement = async (productId, unit, unitType) => {
     try {
-      setReducing(productId); // Optionally set a state to show loading or processing state
-      setMs("Increasing.."); // Optionally set a message or state to indicate operation
-      const res = await cartIncrement(productId, unit, unitType, id); // Assuming cartIncrement is an async function
+      setLoadingForincdic((prev) => ({ ...prev, [productId]: true })); // Set loading state
+      setMs("Increasing..");
+      const res = await cartIncrement(productId, unit, unitType, id);
       if (res?.status === 200) {
-        // message.success("Added into cart");
         Toast.show({
           icon: "success",
           content: "Added into cart",
         });
-        setReducing(""); // Reset the loading state
-        setMs(""); // Clear any message state if needed
         setCartData((prevCartData) => ({
           ...prevCartData,
-          [productId]: res.data, // Update the cart data state with the response data
+          [productId]: res.data,
         }));
-        // Optionally update local state or perform other actions upon success
-        setCount(count + 1); // Update count state or any other local state
+        setCount((prevCount) => prevCount + 1);
       }
     } catch (error) {
-      setReducing(""); // Reset loading state on error
-      setMs(""); // Clear any message state if needed
-      // Handle errors or show error message to the user
+      console.error(error);
+    } finally {
+      setLoadingForincdic((prev) => ({ ...prev, [productId]: false })); // Reset loading state
+      setMs("");
     }
   };
+  
 
   const handleDecrement = async (productId, unit, unitType) => {
     try {
-      setReducing(productId); // Optionally set a state to show loading or processing state
-      setMs("Reducing.."); // Optionally set a message or state to indicate operation
-      const res = await cartDecrement(productId, unit, unitType, id); // Assuming cartDecrement is an async function
+      setLoadingForincdic((prev) => ({ ...prev, [productId]: true })); // Set loading state
+      setMs("Reducing..");
+      const res = await cartDecrement(productId, unit, unitType, id);
       if (res?.status === 200) {
-        // message.success("reduced from the cart");
         Toast.show({
           icon: "success",
-          content: "reduced from the cart",
+          content: "Reduced from the cart",
         });
-
-        setReducing(""); // Reset the loading state
-        setMs(""); // Clear any message state if needed
         setCartData((prevCartData) => ({
           ...prevCartData,
-          [productId]: res.data, // Update the cart data state with the response data
+          [productId]: res.data,
         }));
-        // Optionally update local state or perform other actions upon success
-        setCount(count - 1); // Update count state or any other local state
+        setCount((prevCount) => prevCount - 1);
       } else if (res?.status === 202) {
         Toast.show({
           icon: "success",
-          content: "product has removed from the cart",
+          content: "Product has been removed from the cart",
         });
-        // message.success("product has removed from the cart");
-
         setCartData((prevCartData) => {
           const updatedCartData = { ...prevCartData };
           delete updatedCartData[productId];
@@ -237,15 +230,16 @@ export default function HomeScreen() {
         setCartProducts((prevCartProducts) =>
           prevCartProducts.filter((id) => id !== productId)
         );
-
-        setReload(!reload);
+        setReload((prevReload) => !prevReload);
       }
     } catch (error) {
-      setReducing(""); // Reset loading state on error
-      setMs(""); // Clear any message state if needed
-      // Handle errors or show error message to the user
+      console.error(error);
+    } finally {
+      setLoadingForincdic((prev) => ({ ...prev, [productId]: false })); // Reset loading state
+      setMs("");
     }
   };
+  
 
   const handleOptionSelect = (productId, option) => {
     setSelectedOption((prevState) => ({
@@ -569,74 +563,49 @@ export default function HomeScreen() {
                             )}
                           </div>
                         </div>
-                        <div className=" w-full flex justify-end">
-                          {(cartProducts.includes(data._id) ||
-                            cartData[data._id]) && (
-                            <div className="w-60 h-10 flex px-3 items-center gap-7 justify-between mb-4 ">
-                              <h1>
-                                {cartData[data._id]?.existingProduct?.total ||
-                                  selected.price}
-                              </h1>
-                              <div
-                                className="w-2/6 h-10 bg-red-600 flex items-center justify-center rounded-l-lg"
-                                onClick={() =>
-                                  handleDecrement(
-                                    data._id,
-                                    selected.unit,
-                                    selected.unitType
-                                  )
-                                }
-                              >
-                                {reducing == data._id ? (
-                                  <TailSpin
-                                    type="TailSpin"
-                                    color="#63247d"
-                                    height={20}
-                                    width={20}
-                                  />
-                                ) : (
-                                  <FaMinus />
-                                )}
-                              </div>
-                              <div className="w-2/6 h-full bg-white flex items-center justify-center">
-                                {reducing == data._id ? (
-                                  <TailSpin
-                                    type="TailSpin"
-                                    color="#63247d"
-                                    height={20}
-                                    width={20}
-                                  />
-                                ) : (
-                                  <span>
-                                    {cartData[data._id]?.existingProduct
-                                      ?.quantity || 1}
-                                  </span>
-                                )}
-                              </div>
-                              <div
-                                className="w-2/6 h-full bg-red-600 flex items-center justify-center rounded-r-lg"
-                                onClick={() =>
-                                  handleIncrement(
-                                    data._id,
-                                    selected.unit,
-                                    selected.unitType
-                                  )
-                                }
-                              >
-                                {reducing == data._id ? (
-                                  <TailSpin
-                                    type="TailSpin"
-                                    color="#63247d"
-                                    height={20}
-                                    width={20}
-                                  />
-                                ) : (
-                                  <FaPlus />
-                                )}
-                              </div>
-                            </div>
-                          )}
-                        </div>
+                        <div className="w-full flex justify-end">
+  {(cartProducts.includes(data._id) || cartData[data._id]) && (
+    <div className="w-60 h-10 flex px-3 items-center gap-7 justify-between mb-4 ">
+      <h1>{cartData[data._id]?.existingProduct?.total || selected.price}</h1>
+      <div
+        className={`w-2/6 h-10 ${
+          loadingforincdic[data._id] ? "cursor-not-allowed opacity-50" : "bg-red-600"
+        } flex items-center justify-center rounded-l-lg`}
+        onClick={() =>
+          !loadingforincdic[data._id] && handleDecrement(data._id, selected.unit, selected.unitType)
+        }
+      >
+        {loadingforincdic[data._id] ? (
+          <TailSpin color="#63247d" height={20} width={20} />
+        ) : (
+          <FaMinus />
+        )}
+      </div>
+      <div className="w-2/6 h-full bg-white flex items-center justify-center">
+        {loadingforincdic[data._id] ? (
+          <TailSpin color="#63247d" height={20} width={20} />
+        ) : (
+          <span>{cartData[data._id]?.existingProduct?.quantity || 1}</span>
+        )}
+      </div>
+      <div
+        className={`w-2/6 h-full ${
+          loadingforincdic[data._id] ? "cursor-not-allowed opacity-50" : "bg-red-600"
+        } flex items-center justify-center rounded-r-lg`}
+        onClick={() =>
+          !loadingforincdic[data._id] && handleIncrement(data._id, selected.unit, selected.unitType)
+        }
+      >
+        {loadingforincdic[data._id] ? (
+          <TailSpin color="#63247d" height={20} width={20} />
+        ) : (
+          <FaPlus />
+        )}
+      </div>
+    </div>
+  )}
+</div>
+
                       </div>
                     );
                   })}
