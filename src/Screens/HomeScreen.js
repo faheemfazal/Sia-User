@@ -569,7 +569,7 @@ export default function HomeScreen() {
       <h1>{cartData[data._id]?.existingProduct?.total || selected.price}</h1>
       <div
         className={`w-2/6 h-10 ${
-          loadingforincdic[data._id] ? "cursor-not-allowed opacity-50" : "bg-red-600"
+         "bg-red-600"
         } flex items-center justify-center rounded-l-lg`}
         onClick={() =>
           !loadingforincdic[data._id] && handleDecrement(data._id, selected.unit, selected.unitType)
