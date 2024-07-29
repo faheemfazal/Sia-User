@@ -27,6 +27,7 @@ export default function HomeScreen() {
   let id = "6667454f926ecee4d29cac2d";
 
   const [showHubs, setShowHubs] = useState(false);
+  const [allProduct,setAllProduct]=useState(false)
   // const [categories, setCategories] = useState([]);
   // const { fetchCartCount } = useContext(CartContext);
   const [activeTab, setActiveTab] = useState("ALL PRODUCTS");
@@ -105,7 +106,7 @@ export default function HomeScreen() {
     };
 
     fetchProducts();
-  }, [productload]);
+  }, [productload,allProduct]);
 
   useEffect(() => {
     findUniqueCategory().then((res) => {
@@ -251,6 +252,9 @@ export default function HomeScreen() {
 
   const handleCategoryProduct = (tabId, category) => {
     setActiveTab(tabId);
+    if(category=="ALL PRODUCTS"){
+      return setAllProduct(!allProduct)
+    }
     categoryproducts(category).then((res) => {
       if (res.status === 200) {
         setProducts(res.data.products);
