@@ -71,7 +71,7 @@ export default function ProductDetails() {
       try {
         await addCart(product._id, userid, selectedOption);
         fetchCartCount();
-        message.success('Added into cart');
+        // message.success('Added into cart');
         Toast.show({
           icon: 'success',
           content: 'Added to cart',
@@ -81,6 +81,8 @@ export default function ProductDetails() {
       } finally {
         setSpinner(false);
       }
+    } else {
+      setSpinner(false); // Reset spinner if selectedOption is not available
     }
   };
 
@@ -185,22 +187,25 @@ export default function ProductDetails() {
                     </div>
 
                     <button
-                      className="rounded-full px-4 py-2 mb-4 flex gap-2 text-[#63247d] hover:text-white hover:bg-[#63247d] font-bold text-2xl border-2 border-[#63247d]"
-                      onClick={handleCart}
-                    >
-                      {spinner ? (
-                        <>
-                        
-                        <TailSpin color="#63247d" height={20} width={20} />
-                        <h1>Add to cart</h1>
-                        </>
-                      ) : (
-                        <>
-                          <FaShoppingBag className="mr-2" />
-                          <h1>Add to cart</h1>
-                        </>
-                      )}
-                    </button>
+  className={`rounded-full px-4 py-2 mb-4 flex gap-2 font-bold text-2xl border-2 border-[#63247d] ${
+    spinner ? 'cursor-not-allowed opacity-50' : 'text-[#63247d] hover:text-white hover:bg-[#63247d]'
+  }`}
+  onClick={!spinner ? handleCart : null} // Only allow click if not loading
+  disabled={spinner} // Disable the button when spinner is true
+>
+  {spinner ? (
+    <>
+      <TailSpin color="#63247d" height={20} width={20} />
+      <h1>Add to cart</h1>
+    </>
+  ) : (
+    <>
+      <FaShoppingBag className="mr-2" />
+      <h1>Add to cart</h1>
+    </>
+  )}
+</button>
+
                   </div>
                 </div>
               </div>

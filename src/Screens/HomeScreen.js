@@ -590,7 +590,7 @@ export default function HomeScreen() {
       </div>
       <div
         className={`w-2/6 h-full ${
-          loadingforincdic[data._id] ? "cursor-not-allowed opacity-50" : "bg-red-600"
+           "bg-red-600"
         } flex items-center justify-center rounded-r-lg`}
         onClick={() =>
           !loadingforincdic[data._id] && handleIncrement(data._id, selected.unit, selected.unitType)
