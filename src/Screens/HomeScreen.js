@@ -489,7 +489,7 @@ export default function HomeScreen() {
                                 backgroundRepeat: "no-repeat", // Ensure the image doesn't repeat
                               }}
                             >
-                              <div className="p-2 h-10 text-white m-2 bg-[#63247d] z-20 rounded-2xl w-32">
+                              <div className="p-2 h-10 text-white m-2 bg-[#63247d]  rounded-2xl w-32">
                                 <p className="text-center ">{data.category}</p>
                               </div>
                             </div>
