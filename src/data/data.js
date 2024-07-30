@@ -1,7 +1,7 @@
 // import { img1, img2, img3 } from "../assets/Hero";
-import img1 from '../assets/Hero/img1.png'
-import img2 from '../assets/Hero/img2.png'
-import img3 from '../assets/Hero/img3.png'
+import img1 from '../assets/images/images (1).jpeg'
+import img2 from '../assets/images/istockphoto-1227201480-1024x1024.jpg'
+import img3 from '../assets/images/summer-offer-banner-design-template-aa71e965f65d5800d0e604a48b87f705_screen.jpg'
 
 
 //hero section data
