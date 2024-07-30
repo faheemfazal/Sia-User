@@ -13,6 +13,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { Toast } from "antd-mobile";
 import { TailSpin } from "react-loader-spinner";
+import Banner from "../components/Banner";
 
 export default function HomeScreen() {
   const [count, setCount] = useState(1);
@@ -267,6 +268,10 @@ export default function HomeScreen() {
   return (
     <>
       <Navbar />
+
+      <div className="w-full h-36 font-poppins">
+      <Banner />
+    </div>
       <div className="text-center ">
         <div className="md:flex gap-4 justify-between">
           <div>
