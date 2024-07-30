@@ -10,7 +10,7 @@ const Banner = () => {
    <Swiper
     spaceBetween={30}
     speed={3000}
-    height={50}
+    height={30}
     autoplay={{delay: 6000, disableOnInteraction: false}}
     effect={"fade"}
     fadeEffect={{crossFade: true}}
