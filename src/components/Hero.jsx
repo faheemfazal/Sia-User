@@ -2,8 +2,8 @@ import Button from './Button';
 
 const Hero = ({colorDeep, mainText, shadow, mobileShadow, subText, img}) => {
   return (
-    <main className={`flex lg:flex-row lg:items-center flex-col items-start px-4 z-10 relative overflow-hidden md:px-16`}>
-      <div className="flex flex-col gap-4 lg:w-1/2 justify-center lg:items-start lg:text-left w-full items-center text-center mb-5 md:mb-0">
+    <main className={`flex lg:flex-row lg:items- flex-col items-start px-4 z-10 relative overflow-hidden md:px-16`}>
+      <div className="flex flex-col gap-4 lg:w-1/2 justify-center lg:items-start lg:text-left w-full items- text-center mb-5 md:mb-0">
         <h1 className='md:text-5xl text-4xl mx-auto lg:mx-0 font-bold leading-tight text-navy'>
           We're about <span style={{color: `${colorDeep}`}}>{mainText}!</span>
         </h1>
