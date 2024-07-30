@@ -269,9 +269,7 @@ export default function HomeScreen() {
     <>
       <Navbar />
 
-      <div className="w-full h-36 font-poppins z-50">
-      <Banner />
-    </div>
+     
       <div className="text-center ">
         <div className="md:flex gap-4 justify-between">
           <div>
@@ -395,6 +393,9 @@ export default function HomeScreen() {
           </div>
         </div>
       </div>
+      <div className="w-full h-36 font-poppins z-50">
+      <Banner />
+       </div>
 
       <div className="px-4">
         <div className="py-2">
