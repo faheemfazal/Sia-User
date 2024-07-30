@@ -3,7 +3,7 @@ import Button from './Button';
 
 const Hero = ({colorDeep, mainText, shadow, mobileShadow, subText,img}) => {
   return (
-    <main className={`flex justify-center   z-10 relative overflow-hidden `}>
+    <main className={`flex justify-center lg:flex-row lg:items- flex-col items-start px-4 z-10 relative overflow-hidden md:px-16`}>
       {/* <div className="flex flex-col gap-4 lg:w-1/2 justify-center lg:items-start lg:text-left w-full items- text-center mb-5 md:mb-0">
         <h1 className='md:text-4xl text-3xl mx-auto lg:mx-0 font-bold leading-tight text-navy'>
           We're about <span style={{color: `${colorDeep}`}}>{mainText}!</span>
@@ -17,8 +17,8 @@ const Hero = ({colorDeep, mainText, shadow, mobileShadow, subText,img}) => {
         />
       </div> */}
 
-      <div className = " w-full   relative">
-        <img  src={img} loading="eager" alt={img} className = "w-3/5 " width = "300" height = "100"/>
+      <div className = "lg:w-4/5 w-full  lg:-mt-6 relative">
+        <img  src={img} loading="eager" alt={img} className = "w-3/5 mx-auto" width = "300" height = "100"/>
       </div>
     </main>
   )
