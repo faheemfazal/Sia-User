@@ -21,13 +21,13 @@ const Banner = () => {
         <SwiperSlide 
           key={id} 
           style={{ backgroundColor: `${colorLite}` }} 
-          className="w-full h-36 md:h-64 flex flex-col md:gap-10 gap-4 pt-4 md:pt-8"
+          className="w-full h-36 md:h-64 flex flex-col "
         >
-          <Header colorDeep={colorDeep} />
+          {/* <Header colorDeep={colorDeep} /> */}
           <Hero 
             colorDeep={colorDeep}
             mainText={mainText}
-            subText={subText}
+            // subText={subText}
             shadow={shadow}
             mobileShadow={mobileShadow}
             img={img}
