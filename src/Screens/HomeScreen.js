@@ -393,7 +393,7 @@ export default function HomeScreen() {
           </div>
         </div>
       </div>
-      <div className="w-full h-52 font-poppins z-50">
+      <div className="w-full md:h-64 font-poppins z-50">
       <Banner />
        </div>
 
