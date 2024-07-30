@@ -18,7 +18,7 @@ const Header = ({colorDeep}) => {
         </button>
       </div>
       <nav className={`flex lg:items-center lg:justify-end lg:flex-row pb-4 flex-col lg:pb-0 gap-4 origin-top duration-300 ${openMenu ? 'h-full scale-y-1' : 'h-0 transform lg:transform-none scale-y-0'}`} >
-        <ul className='flex lg:flex-row lg:items-center lg:gap-0 flex-col justify-center gap-4 list-none'>
+        {/* <ul className='flex lg:flex-row lg:items-center lg:gap-0 flex-col justify-center gap-4 list-none'>
           {navItems.map(item => (
             <li key={item.id}>
               <a 
@@ -29,7 +29,7 @@ const Header = ({colorDeep}) => {
               </a>
             </li>
           ))}
-        </ul>
+        </ul> */}
         <Button 
           className={`px-10 py-3 md:text-base text-center text-sm`}
           type='button'

@@ -269,7 +269,7 @@ export default function HomeScreen() {
     <>
       <Navbar />
 
-      <div className="w-full h-36 font-poppins">
+      <div className="w-full h-36 font-poppins z-50">
       <Banner />
     </div>
       <div className="text-center ">
