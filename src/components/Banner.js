@@ -1,7 +1,7 @@
 import { Header, Hero } from "../components";
 import {Swiper, SwiperSlide} from 'swiper/react';
-// import 'swiper/css';
-// import 'swiper/css/effect-fade';
+import 'swiper/css';
+import 'swiper/css/effect-fade';
 import {Autoplay, EffectFade} from 'swiper/modules';
 import { data } from "../data/data";
 
@@ -10,6 +10,7 @@ const Banner = () => {
    <Swiper
     spaceBetween={30}
     speed={3000}
+    height={50}
     autoplay={{delay: 6000, disableOnInteraction: false}}
     effect={"fade"}
     fadeEffect={{crossFade: true}}
