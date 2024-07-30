@@ -17,7 +17,7 @@ const Banner = () => {
     className="mySwiper"
    >
       {data.map(({id, colorDeep, colorLite, mainText, subText, shadow, mobileShadow, img}) => (
-        <SwiperSlide key={id} style={{backgroundColor: `${colorLite}`}} className="w-full h-screen flex flex-col md:gap-10 gap-4 pt-4 md:pt-8">
+        <SwiperSlide key={id} style={{backgroundColor: `${colorLite}`}} className="w-full h-36 flex flex-col md:gap-10 gap-4 pt-4 md:pt-8">
           <Header colorDeep={colorDeep}/>
           <Hero 
             colorDeep={colorDeep}
