@@ -45,15 +45,15 @@ export default function Footer() {
       {/* <h1 href="#why-us" className=" text-4xl text-white mb-4">Why People Like us!</h1> */}
         <div className="grid md:grid-cols-3 gap-4">
           <div>
-            <h2 className="text-lg font-semibold text-white">Shop Info</h2>
+            {/* <h2 className="text-lg font-semibold text-white">Shop Info</h2> */}
             <ul className="space-y-2 ">
-              <li><a href="#about-us" className="hover:text-white">About Us</a></li>
+              {/* <li><a href="#about-us" className="hover:text-white">About Us</a></li> */}
               {/* <li><a href="#contact-us" className="hover:text-white">Contact Us</a></li> */}
     
             </ul>
           </div>
           <div>
-            <h2 className="text-lg font-semibold text-white">Account</h2>
+            {/* <h2 className="text-lg font-semibold text-white">Account</h2> */}
             <ul className="space-y-2 ">
               <li><a href="#my-account" className="hover:text-white">My Account</a></li>
               <p className="nav-item nav-link hover:text-[#63247d] "onClick={handleLogout}>Logout
