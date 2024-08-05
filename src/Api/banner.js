@@ -6,7 +6,7 @@ const axiosuser = clientAxiosIntercepter(url);
 export const getBanner = async () => {
     try {
       const response = await axiosuser({
-        url: `/getBanner`,
+        url: `/getBannerforUser`,
         method: "get",
         // headers: { Authorization: `Bearer ${token}` },
       });
