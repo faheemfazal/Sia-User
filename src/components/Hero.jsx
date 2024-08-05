@@ -1,7 +1,7 @@
 import Button from './Button';
 
 
-const Hero = ({colorDeep, mainText, shadow, mobileShadow, subText,img}) => {
+const Hero = ({img}) => {
   return (
     <main className={`flex justify-center lg:flex-row lg:items- flex-col items-start  z-10 relative overflow-hidden h-36 md:h-64`}>
       {/* <div className="flex flex-col gap-4 lg:w-1/2 justify-center lg:items-start lg:text-left w-full items- text-center mb-5 md:mb-0">

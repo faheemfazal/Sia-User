@@ -4,8 +4,27 @@ import 'swiper/css';
 import 'swiper/css/effect-fade';
 import { Autoplay, EffectFade } from 'swiper/modules';
 import { data } from "../data/data";
+import { useEffect, useState } from "react";
+import { getBanner } from "../Api/banner";
 
 const Banner = () => {
+
+  const [images, setImages] = useState([]); // State to hold fetched images
+
+  // Function to fetch images
+  const fetchImages = async () => {
+    try {
+      const response = await getBanner(); // Replace with your actual API endpoint
+      setImages(response.data.banner); // Assuming the API returns an array of image data
+    } catch (error) {
+      console.error("Error fetching images:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchImages(); // Fetch images on component mount
+  }, []);
+
   return (
     <Swiper
       spaceBetween={30}
@@ -17,20 +36,16 @@ const Banner = () => {
       modules={[Autoplay, EffectFade]}
       className="mySwiper h-36 md:h-64" // Add height classes here
     >
-      {data.map(({ id, colorDeep, colorLite, mainText, subText, shadow, mobileShadow, img }) => (
+      {images.map((data,index) => (
         <SwiperSlide 
-          key={id} 
-          style={{ backgroundColor: `${colorLite}` }} 
+          key={data._id} 
+          style={{ backgroundColor: `${index%2==0 ? "#d3dce0" : "#dcdfc0"}` }} 
           className="w-full h-36 md:h-64 flex flex-col  "
         >
           {/* <Header colorDeep={colorDeep} /> */}
           <Hero 
-            colorDeep={colorDeep}
-            mainText={mainText}
-            subText={subText}
-            shadow={shadow}
-            mobileShadow={mobileShadow}
-            img={img}
+         
+            img={data.bannerImage}
           />
         </SwiperSlide>
       ))}
