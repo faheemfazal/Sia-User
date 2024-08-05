@@ -15,7 +15,8 @@ const Banner = () => {
   const fetchImages = async () => {
     try {
       const response = await getBanner(); // Replace with your actual API endpoint
-      setImages(response.data.banner); // Assuming the API returns an array of image data
+      setImages(response.data.banner);
+      console.log(response,'respo....'); // Assuming the API returns an array of image data
     } catch (error) {
       console.error("Error fetching images:", error);
     }
